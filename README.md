@@ -31,12 +31,12 @@ const client = new RaccoonAI({
 });
 
 async function main() {
-  const lamRunStreamResponse = await client.lam.additionalProperties({
+  const response = await client.lam.additionalProperties({
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   });
 
-  console.log(lamRunStreamResponse.message);
+  console.log(response.message);
 }
 
 main();
@@ -56,8 +56,8 @@ const stream = await client.lam.additionalProperties({
   raccoon_passcode: '<end-user-raccoon-passcode>',
   stream: true,
 });
-for await (const lamRunStreamResponse of stream) {
-  console.log(lamRunStreamResponse.message);
+for await (const lamAdditionalPropertiesResponse of stream) {
+  console.log(lamAdditionalPropertiesResponse.message);
 }
 ```
 
@@ -82,7 +82,7 @@ async function main() {
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   };
-  const lamRunStreamResponse: RaccoonAI.LamRunStreamResponse = await client.lam.additionalProperties(params);
+  const response: RaccoonAI.LamAdditionalPropertiesResponse = await client.lam.additionalProperties(params);
 }
 
 main();
@@ -99,7 +99,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const lamRunStreamResponse = await client.lam
+  const response = await client.lam
     .additionalProperties({
       query: 'Find the price of iphone 16 on Amazon.',
       raccoon_passcode: '<end-user-raccoon-passcode>',
@@ -194,14 +194,14 @@ const response = await client.lam
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: lamRunStreamResponse, response: raw } = await client.lam
+const { data: response, response: raw } = await client.lam
   .additionalProperties({
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(lamRunStreamResponse.message);
+console.log(response.message);
 ```
 
 ### Making custom/undocumented requests

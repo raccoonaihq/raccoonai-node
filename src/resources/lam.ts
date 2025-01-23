@@ -13,22 +13,22 @@ export class Lam extends APIResource {
   additionalProperties(
     body: LamAdditionalPropertiesParamsNonStreaming,
     options?: Core.RequestOptions,
-  ): APIPromise<LamRunStreamResponse>;
+  ): APIPromise<LamAdditionalPropertiesResponse>;
   additionalProperties(
     body: LamAdditionalPropertiesParamsStreaming,
     options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamRunStreamResponse>>;
+  ): APIPromise<Stream<LamAdditionalPropertiesResponse>>;
   additionalProperties(
     body: LamAdditionalPropertiesParamsBase,
     options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamRunStreamResponse> | LamRunStreamResponse>;
+  ): APIPromise<Stream<LamAdditionalPropertiesResponse> | LamAdditionalPropertiesResponse>;
   additionalProperties(
     body: LamAdditionalPropertiesParams,
     options?: Core.RequestOptions,
-  ): APIPromise<LamRunStreamResponse> | APIPromise<Stream<LamRunStreamResponse>> {
+  ): APIPromise<LamAdditionalPropertiesResponse> | APIPromise<Stream<LamAdditionalPropertiesResponse>> {
     return this._client.post('/lam/run', { body, ...options, stream: body.stream ?? false }) as
-      | APIPromise<LamRunStreamResponse>
-      | APIPromise<Stream<LamRunStreamResponse>>;
+      | APIPromise<LamAdditionalPropertiesResponse>
+      | APIPromise<Stream<LamAdditionalPropertiesResponse>>;
   }
 
   /**
@@ -52,12 +52,12 @@ export class Lam extends APIResource {
   /**
    * Lam Run Endpoint
    */
-  run(body: LamRunParams, options?: Core.RequestOptions): Core.APIPromise<LamRunStreamResponse> {
+  run(body: LamRunParams, options?: Core.RequestOptions): Core.APIPromise<LamRunResponse> {
     return this._client.post('/lam/run', { body, ...options });
   }
 }
 
-export interface LamRunStreamResponse {
+export interface LamAdditionalPropertiesResponse {
   /**
    * A message providing the thought summary if the status is processing currently.
    */
@@ -149,6 +149,24 @@ export namespace LamIntegrationRunResponse {
      */
     task_status: string;
   }
+}
+
+export interface LamRunResponse {
+  /**
+   * A message providing the thought summary if the status is processing currently.
+   */
+  message: string;
+
+  /**
+   * Additional metadata or details related to the run task.
+   */
+  properties: unknown;
+
+  /**
+   * The current status of the extraction task. For example: 'STARTING',
+   * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
+   */
+  task_status: string;
 }
 
 export type LamAdditionalPropertiesParams =
@@ -297,9 +315,10 @@ export interface LamRunParams {
 
 export declare namespace Lam {
   export {
-    type LamRunStreamResponse as LamRunStreamResponse,
+    type LamAdditionalPropertiesResponse as LamAdditionalPropertiesResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
+    type LamRunResponse as LamRunResponse,
     type LamAdditionalPropertiesParams as LamAdditionalPropertiesParams,
     type LamAdditionalPropertiesParamsNonStreaming as LamAdditionalPropertiesParamsNonStreaming,
     type LamAdditionalPropertiesParamsStreaming as LamAdditionalPropertiesParamsStreaming,

@@ -10,12 +10,13 @@ import {
   LamAdditionalPropertiesParams,
   LamAdditionalPropertiesParamsNonStreaming,
   LamAdditionalPropertiesParamsStreaming,
+  LamAdditionalPropertiesResponse,
   LamExtractParams,
   LamExtractResponse,
   LamIntegrationRunParams,
   LamIntegrationRunResponse,
   LamRunParams,
-  LamRunStreamResponse,
+  LamRunResponse,
 } from './resources/lam';
 
 const environments = {
@@ -200,9 +201,10 @@ export declare namespace RaccoonAI {
 
   export {
     Lam as Lam,
-    type LamRunStreamResponse as LamRunStreamResponse,
+    type LamAdditionalPropertiesResponse as LamAdditionalPropertiesResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
+    type LamRunResponse as LamRunResponse,
     type LamAdditionalPropertiesParams as LamAdditionalPropertiesParams,
     type LamAdditionalPropertiesParamsNonStreaming as LamAdditionalPropertiesParamsNonStreaming,
     type LamAdditionalPropertiesParamsStreaming as LamAdditionalPropertiesParamsStreaming,

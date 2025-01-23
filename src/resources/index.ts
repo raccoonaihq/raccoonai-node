@@ -2,9 +2,10 @@
 
 export {
   Lam,
-  type LamRunStreamResponse,
+  type LamAdditionalPropertiesResponse,
   type LamExtractResponse,
   type LamIntegrationRunResponse,
+  type LamRunResponse,
   type LamAdditionalPropertiesParams,
   type LamAdditionalPropertiesParamsNonStreaming,
   type LamAdditionalPropertiesParamsStreaming,

@@ -5,7 +5,15 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Lam } from './resources/lam/lam';
+import {
+  Lam,
+  LamExtractParams,
+  LamExtractResponse,
+  LamIntegrationRunParams,
+  LamIntegrationRunResponse,
+  LamRunParams,
+  LamRunResponse,
+} from './resources/lam';
 
 const environments = {
   production: 'https://api.flyingraccoon.tech',
@@ -187,7 +195,15 @@ Raccoonai.Lam = Lam;
 export declare namespace Raccoonai {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Lam as Lam };
+  export {
+    Lam as Lam,
+    type LamExtractResponse as LamExtractResponse,
+    type LamIntegrationRunResponse as LamIntegrationRunResponse,
+    type LamRunResponse as LamRunResponse,
+    type LamExtractParams as LamExtractParams,
+    type LamIntegrationRunParams as LamIntegrationRunParams,
+    type LamRunParams as LamRunParams,
+  };
 }
 
 export { toFile, fileFromPath } from './uploads';

@@ -1,31 +1,13 @@
 # Lam
 
-## Run
-
 Types:
 
-- <code><a href="./src/resources/lam/run.ts">RunCreateResponse</a></code>
+- <code><a href="./src/resources/lam.ts">LamExtractResponse</a></code>
+- <code><a href="./src/resources/lam.ts">LamIntegrationRunResponse</a></code>
+- <code><a href="./src/resources/lam.ts">LamRunResponse</a></code>
 
 Methods:
 
-- <code title="post /lam/run">client.lam.run.<a href="./src/resources/lam/run.ts">create</a>({ ...params }) -> RunCreateResponse</code>
-
-## Extract
-
-Types:
-
-- <code><a href="./src/resources/lam/extract.ts">ExtractCreateResponse</a></code>
-
-Methods:
-
-- <code title="post /lam/extract">client.lam.extract.<a href="./src/resources/lam/extract.ts">create</a>({ ...params }) -> ExtractCreateResponse</code>
-
-## Integration
-
-Types:
-
-- <code><a href="./src/resources/lam/integration.ts">IntegrationRunResponse</a></code>
-
-Methods:
-
-- <code title="post /lam/{app_name}/run">client.lam.integration.<a href="./src/resources/lam/integration.ts">run</a>(appName, { ...params }) -> IntegrationRunResponse</code>
+- <code title="post /lam/extract">client.lam.<a href="./src/resources/lam.ts">extract</a>({ ...params }) -> LamExtractResponse</code>
+- <code title="post /lam/{app_name}/run">client.lam.<a href="./src/resources/lam.ts">integrationRun</a>(appName, { ...params }) -> LamIntegrationRunResponse</code>
+- <code title="post /lam/run">client.lam.<a href="./src/resources/lam.ts">run</a>({ ...params }) -> LamRunResponse</code>

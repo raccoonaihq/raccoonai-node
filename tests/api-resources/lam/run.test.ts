@@ -10,7 +10,10 @@ const client = new Raccoonai({
 
 describe('resource run', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.lam.run.create({ raccoon_passcode: '<end-user-raccoon-passcode>' });
+    const responsePromise = client.lam.run.create({
+      query: 'Find the price of iphone 16 on Amazon.',
+      raccoon_passcode: '<end-user-raccoon-passcode>',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,10 +25,10 @@ describe('resource run', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.lam.run.create({
+      query: 'Find the price of iphone 16 on Amazon.',
       raccoon_passcode: '<end-user-raccoon-passcode>',
       app_url: 'https://www.amazon.com',
-      chat_history: [{ text: 'text', userId: 'userId' }],
-      query: 'Find the price of iphone 16 on Amazon.',
+      chat_history: [{}],
       stream: true,
     });
   });

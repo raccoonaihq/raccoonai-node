@@ -217,14 +217,14 @@ describe('instantiate client', () => {
 
   test('with environment variable arguments', () => {
     // set options via env var
-    process.env['SECRET_KEY'] = 'My Secret Key';
+    process.env['RACCOON_SECRET_KEY'] = 'My Secret Key';
     const client = new Raccoonai();
     expect(client.secretKey).toBe('My Secret Key');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
-    process.env['SECRET_KEY'] = 'another My Secret Key';
+    process.env['RACCOON_SECRET_KEY'] = 'another My Secret Key';
     const client = new Raccoonai({ secretKey: 'My Secret Key' });
     expect(client.secretKey).toBe('My Secret Key');
   });

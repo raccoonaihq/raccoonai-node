@@ -10,7 +10,10 @@ const client = new Raccoonai({
 
 describe('resource extract', () => {
   test('create: only required params', async () => {
-    const responsePromise = client.lam.extract.create({ raccoon_passcode: '<end-user-raccoon-passcode>' });
+    const responsePromise = client.lam.extract.create({
+      query: 'Find YCombinator startups who got funded in W24.',
+      raccoon_passcode: '<end-user-raccoon-passcode>',
+    });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -22,11 +25,11 @@ describe('resource extract', () => {
 
   test('create: required and optional params', async () => {
     const response = await client.lam.extract.create({
+      query: 'Find YCombinator startups who got funded in W24.',
       raccoon_passcode: '<end-user-raccoon-passcode>',
       app_url: 'https://www.ycombinator.com/companies',
-      chat_history: [{ text: 'text', userId: 'userId' }],
+      chat_history: [{}],
       max_count: 5,
-      query: 'Find YCombinator startups who got funded in W24.',
       schema: {
         address: {
           city: 'What city is the company located in?',

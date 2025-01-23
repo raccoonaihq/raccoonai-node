@@ -26,12 +26,15 @@ The full API of this library can be found in [api.md](api.md).
 import Raccoonai from 'raccoonai';
 
 const client = new Raccoonai({
-  secretKey: process.env['SECRET_KEY'], // This is the default and can be omitted
+  secretKey: process.env['RACCOON_SECRET_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // defaults to 'production'
 });
 
 async function main() {
-  const run = await client.lam.run.create({ raccoon_passcode: '<end-user-raccoon-passcode>' });
+  const run = await client.lam.run.create({
+    query: 'Find the price of iphone 16 on Amazon.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  });
 
   console.log(run.message);
 }
@@ -48,12 +51,15 @@ This library includes TypeScript definitions for all request params and response
 import Raccoonai from 'raccoonai';
 
 const client = new Raccoonai({
-  secretKey: process.env['SECRET_KEY'], // This is the default and can be omitted
+  secretKey: process.env['RACCOON_SECRET_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // defaults to 'production'
 });
 
 async function main() {
-  const params: Raccoonai.Lam.RunCreateParams = { raccoon_passcode: '<end-user-raccoon-passcode>' };
+  const params: Raccoonai.Lam.RunCreateParams = {
+    query: 'Find the price of iphone 16 on Amazon.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  };
   const run: Raccoonai.Lam.RunCreateResponse = await client.lam.run.create(params);
 }
 
@@ -72,7 +78,10 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const run = await client.lam.run
-    .create({ raccoon_passcode: '<end-user-raccoon-passcode>' })
+    .create({
+      query: 'Find the price of iphone 16 on Amazon.',
+      raccoon_passcode: '<end-user-raccoon-passcode>',
+    })
     .catch(async (err) => {
       if (err instanceof Raccoonai.APIError) {
         console.log(err.status); // 400
@@ -116,7 +125,7 @@ const client = new Raccoonai({
 });
 
 // Or, configure per-request:
-await client.lam.run.create({ raccoon_passcode: '<end-user-raccoon-passcode>' }, {
+await client.lam.run.create({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
   maxRetries: 5,
 });
 ```
@@ -133,7 +142,7 @@ const client = new Raccoonai({
 });
 
 // Override per-request:
-await client.lam.run.create({ raccoon_passcode: '<end-user-raccoon-passcode>' }, {
+await client.lam.run.create({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -155,13 +164,19 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new Raccoonai();
 
 const response = await client.lam.run
-  .create({ raccoon_passcode: '<end-user-raccoon-passcode>' })
+  .create({
+    query: 'Find the price of iphone 16 on Amazon.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: run, response: raw } = await client.lam.run
-  .create({ raccoon_passcode: '<end-user-raccoon-passcode>' })
+  .create({
+    query: 'Find the price of iphone 16 on Amazon.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(run.message);
@@ -269,7 +284,7 @@ const client = new Raccoonai({
 
 // Override per-request:
 await client.lam.run.create(
-  { raccoon_passcode: '<end-user-raccoon-passcode>' },
+  { query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },

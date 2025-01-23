@@ -96,7 +96,7 @@ export class Raccoonai extends Core.APIClient {
   /**
    * API Client for interfacing with the Raccoonai API.
    *
-   * @param {string | undefined} [opts.secretKey=process.env['SECRET_KEY'] ?? undefined]
+   * @param {string | undefined} [opts.secretKey=process.env['RACCOON_SECRET_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['RACCOONAI_BASE_URL'] ?? https://api.flyingraccoon.tech] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -108,12 +108,12 @@ export class Raccoonai extends Core.APIClient {
    */
   constructor({
     baseURL = Core.readEnv('RACCOONAI_BASE_URL'),
-    secretKey = Core.readEnv('SECRET_KEY'),
+    secretKey = Core.readEnv('RACCOON_SECRET_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (secretKey === undefined) {
       throw new Errors.RaccoonaiError(
-        "The SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the Raccoonai client with an secretKey option, like new Raccoonai({ secretKey: 'My Secret Key' }).",
+        "The RACCOON_SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the Raccoonai client with an secretKey option, like new Raccoonai({ secretKey: 'My Secret Key' }).",
       );
     }
 
@@ -157,7 +157,7 @@ export class Raccoonai extends Core.APIClient {
   }
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
-    return { 'secret-key': this.secretKey };
+    return { 'raccoon-secret-key': this.secretKey };
   }
 
   static Raccoonai = this;

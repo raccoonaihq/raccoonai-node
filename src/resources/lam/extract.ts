@@ -38,6 +38,11 @@ export interface ExtractCreateResponse {
 
 export interface ExtractCreateParams {
   /**
+   * The input query string for the request. This is typically the main prompt.
+   */
+  query: string;
+
+  /**
    * The raccoon passcode associated with the end user on behalf of which the call is
    * being made.
    */
@@ -52,17 +57,12 @@ export interface ExtractCreateParams {
    * The history of the conversation as a list of messages or objects you might use
    * while building a chat app to give the model context of the past conversation.
    */
-  chat_history?: Array<ExtractCreateParams.ChatHistory> | null;
+  chat_history?: Array<unknown> | null;
 
   /**
    * The maximum number of results to extract.
    */
   max_count?: number | null;
-
-  /**
-   * The input query string for the request. This is typically the main prompt.
-   */
-  query?: string | null;
 
   /**
    * The expected schema for the response. This is a dictionary where the keys
@@ -74,14 +74,6 @@ export interface ExtractCreateParams {
    * Whether the response should be streamed back or not.
    */
   stream?: boolean | null;
-}
-
-export namespace ExtractCreateParams {
-  export interface ChatHistory {
-    text?: string;
-
-    userId?: string;
-  }
 }
 
 export declare namespace Extract {

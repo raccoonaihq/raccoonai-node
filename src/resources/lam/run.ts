@@ -32,6 +32,11 @@ export interface RunCreateResponse {
 
 export interface RunCreateParams {
   /**
+   * The input query string for the request. This is typically the main prompt.
+   */
+  query: string;
+
+  /**
    * The raccoon passcode associated with the end user on behalf of which the call is
    * being made.
    */
@@ -46,25 +51,12 @@ export interface RunCreateParams {
    * The history of the conversation as a list of messages or objects you might use
    * while building a chat app to give the model context of the past conversation.
    */
-  chat_history?: Array<RunCreateParams.ChatHistory> | null;
-
-  /**
-   * The input query string for the request. This is typically the main prompt.
-   */
-  query?: string | null;
+  chat_history?: Array<unknown> | null;
 
   /**
    * Whether the response should be streamed back or not.
    */
   stream?: boolean | null;
-}
-
-export namespace RunCreateParams {
-  export interface ChatHistory {
-    text?: string;
-
-    userId?: string;
-  }
 }
 
 export declare namespace Run {

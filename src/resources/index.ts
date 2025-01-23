@@ -2,9 +2,9 @@
 
 export {
   Lam,
+  type LamRunStreamResponse,
   type LamExtractResponse,
   type LamIntegrationRunResponse,
-  type LamRunResponse,
   type LamExtractParams,
   type LamIntegrationRunParams,
   type LamRunParams,

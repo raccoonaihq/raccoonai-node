@@ -25,9 +25,27 @@ export class Lam extends APIResource {
   /**
    * Lam Run Endpoint
    */
-  run(body: LamRunParams, options?: Core.RequestOptions): Core.APIPromise<LamRunResponse> {
+  run(body: LamRunParams, options?: Core.RequestOptions): Core.APIPromise<LamRunStreamResponse> {
     return this._client.post('/lam/run', { body, ...options });
   }
+}
+
+export interface LamRunStreamResponse {
+  /**
+   * A message providing the thought summary if the status is processing currently.
+   */
+  message: string;
+
+  /**
+   * Additional metadata or details related to the run task.
+   */
+  properties: unknown;
+
+  /**
+   * The current status of the extraction task. For example: 'STARTING',
+   * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
+   */
+  task_status: string;
 }
 
 export interface LamExtractResponse {
@@ -104,24 +122,6 @@ export namespace LamIntegrationRunResponse {
      */
     task_status: string;
   }
-}
-
-export interface LamRunResponse {
-  /**
-   * A message providing the thought summary if the status is processing currently.
-   */
-  message: string;
-
-  /**
-   * Additional metadata or details related to the run task.
-   */
-  properties: unknown;
-
-  /**
-   * The current status of the extraction task. For example: 'STARTING',
-   * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
-   */
-  task_status: string;
 }
 
 export interface LamExtractParams {
@@ -218,9 +218,9 @@ export interface LamRunParams {
 
 export declare namespace Lam {
   export {
+    type LamRunStreamResponse as LamRunStreamResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
-    type LamRunResponse as LamRunResponse,
     type LamExtractParams as LamExtractParams,
     type LamIntegrationRunParams as LamIntegrationRunParams,
     type LamRunParams as LamRunParams,

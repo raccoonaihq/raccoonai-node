@@ -12,7 +12,7 @@ import {
   LamIntegrationRunParams,
   LamIntegrationRunResponse,
   LamRunParams,
-  LamRunResponse,
+  LamRunStreamResponse,
 } from './resources/lam';
 
 const environments = {
@@ -197,9 +197,9 @@ export declare namespace RaccoonAI {
 
   export {
     Lam as Lam,
+    type LamRunStreamResponse as LamRunStreamResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
-    type LamRunResponse as LamRunResponse,
     type LamExtractParams as LamExtractParams,
     type LamIntegrationRunParams as LamIntegrationRunParams,
     type LamRunParams as LamRunParams,

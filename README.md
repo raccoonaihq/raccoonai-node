@@ -31,12 +31,12 @@ const client = new RaccoonAI({
 });
 
 async function main() {
-  const response = await client.lam.run({
+  const lamRunStreamResponse = await client.lam.run({
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   });
 
-  console.log(response.message);
+  console.log(lamRunStreamResponse.message);
 }
 
 main();
@@ -60,7 +60,7 @@ async function main() {
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   };
-  const response: RaccoonAI.LamRunResponse = await client.lam.run(params);
+  const lamRunStreamResponse: RaccoonAI.LamRunStreamResponse = await client.lam.run(params);
 }
 
 main();
@@ -77,7 +77,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.lam
+  const lamRunStreamResponse = await client.lam
     .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
     .catch(async (err) => {
       if (err instanceof RaccoonAI.APIError) {
@@ -166,11 +166,11 @@ const response = await client.lam
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.lam
+const { data: lamRunStreamResponse, response: raw } = await client.lam
   .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.message);
+console.log(lamRunStreamResponse.message);
 ```
 
 ### Making custom/undocumented requests

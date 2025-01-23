@@ -7,6 +7,9 @@ import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
   Lam,
+  LamAdditionalPropertiesParams,
+  LamAdditionalPropertiesParamsNonStreaming,
+  LamAdditionalPropertiesParamsStreaming,
   LamExtractParams,
   LamExtractResponse,
   LamIntegrationRunParams,
@@ -200,6 +203,9 @@ export declare namespace RaccoonAI {
     type LamRunStreamResponse as LamRunStreamResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
+    type LamAdditionalPropertiesParams as LamAdditionalPropertiesParams,
+    type LamAdditionalPropertiesParamsNonStreaming as LamAdditionalPropertiesParamsNonStreaming,
+    type LamAdditionalPropertiesParamsStreaming as LamAdditionalPropertiesParamsStreaming,
     type LamExtractParams as LamExtractParams,
     type LamIntegrationRunParams as LamIntegrationRunParams,
     type LamRunParams as LamRunParams,

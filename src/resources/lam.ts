@@ -1,9 +1,36 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { APIPromise } from '../core';
 import * as Core from '../core';
+import * as LamAPI from './lam';
+import { Stream } from '../streaming';
 
 export class Lam extends APIResource {
+  /**
+   * Lam Run Endpoint
+   */
+  additionalProperties(
+    body: LamAdditionalPropertiesParamsNonStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<LamRunStreamResponse>;
+  additionalProperties(
+    body: LamAdditionalPropertiesParamsStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<LamRunStreamResponse>>;
+  additionalProperties(
+    body: LamAdditionalPropertiesParamsBase,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<LamRunStreamResponse> | LamRunStreamResponse>;
+  additionalProperties(
+    body: LamAdditionalPropertiesParams,
+    options?: Core.RequestOptions,
+  ): APIPromise<LamRunStreamResponse> | APIPromise<Stream<LamRunStreamResponse>> {
+    return this._client.post('/lam/run', { body, ...options, stream: body.stream ?? false }) as
+      | APIPromise<LamRunStreamResponse>
+      | APIPromise<Stream<LamRunStreamResponse>>;
+  }
+
   /**
    * Lam Extract Endpoint
    */
@@ -124,6 +151,58 @@ export namespace LamIntegrationRunResponse {
   }
 }
 
+export type LamAdditionalPropertiesParams =
+  | LamAdditionalPropertiesParamsNonStreaming
+  | LamAdditionalPropertiesParamsStreaming;
+
+export interface LamAdditionalPropertiesParamsBase {
+  /**
+   * The input query string for the request. This is typically the main prompt.
+   */
+  query: string;
+
+  /**
+   * The raccoon passcode associated with the end user on behalf of which the call is
+   * being made.
+   */
+  raccoon_passcode: string;
+
+  /**
+   * This is the entrypoint URL for the web agent.
+   */
+  app_url?: string | null;
+
+  /**
+   * The history of the conversation as a list of messages or objects you might use
+   * while building a chat app to give the model context of the past conversation.
+   */
+  chat_history?: Array<unknown> | null;
+
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream?: boolean | null;
+}
+
+export namespace LamAdditionalPropertiesParams {
+  export type LamAdditionalPropertiesParamsNonStreaming = LamAPI.LamAdditionalPropertiesParamsNonStreaming;
+  export type LamAdditionalPropertiesParamsStreaming = LamAPI.LamAdditionalPropertiesParamsStreaming;
+}
+
+export interface LamAdditionalPropertiesParamsNonStreaming extends LamAdditionalPropertiesParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream?: false | null;
+}
+
+export interface LamAdditionalPropertiesParamsStreaming extends LamAdditionalPropertiesParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream: true;
+}
+
 export interface LamExtractParams {
   /**
    * The input query string for the request. This is typically the main prompt.
@@ -221,6 +300,9 @@ export declare namespace Lam {
     type LamRunStreamResponse as LamRunStreamResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
+    type LamAdditionalPropertiesParams as LamAdditionalPropertiesParams,
+    type LamAdditionalPropertiesParamsNonStreaming as LamAdditionalPropertiesParamsNonStreaming,
+    type LamAdditionalPropertiesParamsStreaming as LamAdditionalPropertiesParamsStreaming,
     type LamExtractParams as LamExtractParams,
     type LamIntegrationRunParams as LamIntegrationRunParams,
     type LamRunParams as LamRunParams,

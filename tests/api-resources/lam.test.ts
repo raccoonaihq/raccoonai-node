@@ -9,6 +9,30 @@ const client = new RaccoonAI({
 });
 
 describe('resource lam', () => {
+  test('additionalProperties: only required params', async () => {
+    const responsePromise = client.lam.additionalProperties({
+      query: 'Find the price of iphone 16 on Amazon.',
+      raccoon_passcode: '<end-user-raccoon-passcode>',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('additionalProperties: required and optional params', async () => {
+    const response = await client.lam.additionalProperties({
+      query: 'Find the price of iphone 16 on Amazon.',
+      raccoon_passcode: '<end-user-raccoon-passcode>',
+      app_url: 'https://www.amazon.com',
+      chat_history: [{}],
+      stream: false,
+    });
+  });
+
   test('extract: only required params', async () => {
     const responsePromise = client.lam.extract({
       query: 'Find YCombinator startups who got funded in W24.',

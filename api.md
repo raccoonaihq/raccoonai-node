@@ -8,6 +8,7 @@ Types:
 
 Methods:
 
+- <code title="post /lam/run">client.lam.<a href="./src/resources/lam.ts">additionalProperties</a>({ ...params }) -> LamRunStreamResponse</code>
 - <code title="post /lam/extract">client.lam.<a href="./src/resources/lam.ts">extract</a>({ ...params }) -> LamExtractResponse</code>
 - <code title="post /lam/{app_name}/run">client.lam.<a href="./src/resources/lam.ts">integrationRun</a>(appName, { ...params }) -> LamIntegrationRunResponse</code>
 - <code title="post /lam/run">client.lam.<a href="./src/resources/lam.ts">run</a>({ ...params }) -> LamRunStreamResponse</code>

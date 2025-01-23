@@ -31,7 +31,7 @@ const client = new RaccoonAI({
 });
 
 async function main() {
-  const lamRunStreamResponse = await client.lam.run({
+  const lamRunStreamResponse = await client.lam.additionalProperties({
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   });
@@ -41,6 +41,28 @@ async function main() {
 
 main();
 ```
+
+## Streaming responses
+
+We provide support for streaming responses using Server Sent Events (SSE).
+
+```ts
+import RaccoonAI from 'raccoonai';
+
+const client = new RaccoonAI();
+
+const stream = await client.lam.additionalProperties({
+  query: 'Find the price of iphone 16 on Amazon.',
+  raccoon_passcode: '<end-user-raccoon-passcode>',
+  stream: true,
+});
+for await (const lamRunStreamResponse of stream) {
+  console.log(lamRunStreamResponse.message);
+}
+```
+
+If you need to cancel a stream, you can `break` from the loop
+or call `stream.controller.abort()`.
 
 ### Request & Response types
 
@@ -56,11 +78,11 @@ const client = new RaccoonAI({
 });
 
 async function main() {
-  const params: RaccoonAI.LamRunParams = {
+  const params: RaccoonAI.LamAdditionalPropertiesParams = {
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   };
-  const lamRunStreamResponse: RaccoonAI.LamRunStreamResponse = await client.lam.run(params);
+  const lamRunStreamResponse: RaccoonAI.LamRunStreamResponse = await client.lam.additionalProperties(params);
 }
 
 main();
@@ -78,7 +100,10 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const lamRunStreamResponse = await client.lam
-    .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
+    .additionalProperties({
+      query: 'Find the price of iphone 16 on Amazon.',
+      raccoon_passcode: '<end-user-raccoon-passcode>',
+    })
     .catch(async (err) => {
       if (err instanceof RaccoonAI.APIError) {
         console.log(err.status); // 400
@@ -122,7 +147,7 @@ const client = new RaccoonAI({
 });
 
 // Or, configure per-request:
-await client.lam.run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
+await client.lam.additionalProperties({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
   maxRetries: 5,
 });
 ```
@@ -139,7 +164,7 @@ const client = new RaccoonAI({
 });
 
 // Override per-request:
-await client.lam.run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
+await client.lam.additionalProperties({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -161,13 +186,19 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new RaccoonAI();
 
 const response = await client.lam
-  .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
+  .additionalProperties({
+    query: 'Find the price of iphone 16 on Amazon.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: lamRunStreamResponse, response: raw } = await client.lam
-  .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
+  .additionalProperties({
+    query: 'Find the price of iphone 16 on Amazon.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(lamRunStreamResponse.message);
@@ -274,7 +305,7 @@ const client = new RaccoonAI({
 });
 
 // Override per-request:
-await client.lam.run(
+await client.lam.additionalProperties(
   { query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' },
   {
     httpAgent: new http.Agent({ keepAlive: false }),

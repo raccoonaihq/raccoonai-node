@@ -9,7 +9,8 @@ import { Lam } from './resources/lam/lam';
 
 const environments = {
   production: 'https://api.flyingraccoon.tech',
-  environment_1: 'https://staging.flyingraccoon.tech',
+  staging: 'https://staging.flyingraccoon.tech',
+  local: 'http://localhost:3800',
 };
 type Environment = keyof typeof environments;
 
@@ -24,7 +25,8 @@ export interface ClientOptions {
    *
    * Each environment maps to a different base URL:
    * - `production` corresponds to `https://api.flyingraccoon.tech`
-   * - `environment_1` corresponds to `https://staging.flyingraccoon.tech`
+   * - `staging` corresponds to `https://staging.flyingraccoon.tech`
+   * - `local` corresponds to `http://localhost:3800`
    */
   environment?: Environment | undefined;
 

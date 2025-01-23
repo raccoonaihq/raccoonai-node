@@ -27,7 +27,7 @@ import Raccoonai from 'raccoonai';
 
 const client = new Raccoonai({
   secretKey: process.env['RACCOON_SECRET_KEY'], // This is the default and can be omitted
-  environment: 'environment_1', // defaults to 'production'
+  environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
 
 async function main() {
@@ -52,7 +52,7 @@ import Raccoonai from 'raccoonai';
 
 const client = new Raccoonai({
   secretKey: process.env['RACCOON_SECRET_KEY'], // This is the default and can be omitted
-  environment: 'environment_1', // defaults to 'production'
+  environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
 
 async function main() {

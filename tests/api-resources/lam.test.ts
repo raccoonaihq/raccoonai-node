@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Raccoonai from 'raccoonai';
+import RaccoonAI from 'raccoonai';
 import { Response } from 'node-fetch';
 
-const client = new Raccoonai({
+const client = new RaccoonAI({
   secretKey: 'My Secret Key',
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });

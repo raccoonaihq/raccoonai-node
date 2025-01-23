@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Raccoonai from 'raccoonai';
+import RaccoonAI from 'raccoonai';
 import { APIUserAbortError } from 'raccoonai';
 import { Headers } from 'raccoonai/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
@@ -20,7 +20,7 @@ describe('instantiate client', () => {
   });
 
   describe('defaultHeaders', () => {
-    const client = new Raccoonai({
+    const client = new RaccoonAI({
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
       secretKey: 'My Secret Key',
@@ -52,7 +52,7 @@ describe('instantiate client', () => {
 
   describe('defaultQuery', () => {
     test('with null query params given', () => {
-      const client = new Raccoonai({
+      const client = new RaccoonAI({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo' },
         secretKey: 'My Secret Key',
@@ -61,7 +61,7 @@ describe('instantiate client', () => {
     });
 
     test('multiple default query params', () => {
-      const client = new Raccoonai({
+      const client = new RaccoonAI({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
         secretKey: 'My Secret Key',
@@ -70,7 +70,7 @@ describe('instantiate client', () => {
     });
 
     test('overriding with `undefined`', () => {
-      const client = new Raccoonai({
+      const client = new RaccoonAI({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { hello: 'world' },
         secretKey: 'My Secret Key',
@@ -80,7 +80,7 @@ describe('instantiate client', () => {
   });
 
   test('custom fetch', async () => {
-    const client = new Raccoonai({
+    const client = new RaccoonAI({
       baseURL: 'http://localhost:5000/',
       secretKey: 'My Secret Key',
       fetch: (url) => {
@@ -98,7 +98,7 @@ describe('instantiate client', () => {
 
   test('explicit global fetch', async () => {
     // make sure the global fetch type is assignable to our Fetch type
-    const client = new Raccoonai({
+    const client = new RaccoonAI({
       baseURL: 'http://localhost:5000/',
       secretKey: 'My Secret Key',
       fetch: defaultFetch,
@@ -106,7 +106,7 @@ describe('instantiate client', () => {
   });
 
   test('custom signal', async () => {
-    const client = new Raccoonai({
+    const client = new RaccoonAI({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       secretKey: 'My Secret Key',
       fetch: (...args) => {
@@ -138,7 +138,7 @@ describe('instantiate client', () => {
       return new Response(JSON.stringify({}), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Raccoonai({
+    const client = new RaccoonAI({
       baseURL: 'http://localhost:5000/',
       secretKey: 'My Secret Key',
       fetch: testFetch,
@@ -150,7 +150,7 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new Raccoonai({
+      const client = new RaccoonAI({
         baseURL: 'http://localhost:5000/custom/path/',
         secretKey: 'My Secret Key',
       });
@@ -158,7 +158,7 @@ describe('instantiate client', () => {
     });
 
     test('no trailing slash', () => {
-      const client = new Raccoonai({
+      const client = new RaccoonAI({
         baseURL: 'http://localhost:5000/custom/path',
         secretKey: 'My Secret Key',
       });
@@ -166,72 +166,72 @@ describe('instantiate client', () => {
     });
 
     afterEach(() => {
-      process.env['RACCOONAI_BASE_URL'] = undefined;
+      process.env['RACCOON_AI_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
-      const client = new Raccoonai({ baseURL: 'https://example.com', secretKey: 'My Secret Key' });
+      const client = new RaccoonAI({ baseURL: 'https://example.com', secretKey: 'My Secret Key' });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
-      process.env['RACCOONAI_BASE_URL'] = 'https://example.com/from_env';
-      const client = new Raccoonai({ secretKey: 'My Secret Key' });
+      process.env['RACCOON_AI_BASE_URL'] = 'https://example.com/from_env';
+      const client = new RaccoonAI({ secretKey: 'My Secret Key' });
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
-      process.env['RACCOONAI_BASE_URL'] = ''; // empty
-      const client = new Raccoonai({ secretKey: 'My Secret Key' });
+      process.env['RACCOON_AI_BASE_URL'] = ''; // empty
+      const client = new RaccoonAI({ secretKey: 'My Secret Key' });
       expect(client.baseURL).toEqual('https://api.flyingraccoon.tech');
     });
 
     test('blank env variable', () => {
-      process.env['RACCOONAI_BASE_URL'] = '  '; // blank
-      const client = new Raccoonai({ secretKey: 'My Secret Key' });
+      process.env['RACCOON_AI_BASE_URL'] = '  '; // blank
+      const client = new RaccoonAI({ secretKey: 'My Secret Key' });
       expect(client.baseURL).toEqual('https://api.flyingraccoon.tech');
     });
 
     test('env variable with environment', () => {
-      process.env['RACCOONAI_BASE_URL'] = 'https://example.com/from_env';
+      process.env['RACCOON_AI_BASE_URL'] = 'https://example.com/from_env';
 
       expect(
-        () => new Raccoonai({ secretKey: 'My Secret Key', environment: 'production' }),
+        () => new RaccoonAI({ secretKey: 'My Secret Key', environment: 'production' }),
       ).toThrowErrorMatchingInlineSnapshot(
-        `"Ambiguous URL; The \`baseURL\` option (or RACCOONAI_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
+        `"Ambiguous URL; The \`baseURL\` option (or RACCOON_AI_BASE_URL env var) and the \`environment\` option are given. If you want to use the environment you must pass baseURL: null"`,
       );
 
-      const client = new Raccoonai({ secretKey: 'My Secret Key', baseURL: null, environment: 'production' });
+      const client = new RaccoonAI({ secretKey: 'My Secret Key', baseURL: null, environment: 'production' });
       expect(client.baseURL).toEqual('https://api.flyingraccoon.tech');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new Raccoonai({ maxRetries: 4, secretKey: 'My Secret Key' });
+    const client = new RaccoonAI({ maxRetries: 4, secretKey: 'My Secret Key' });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new Raccoonai({ secretKey: 'My Secret Key' });
+    const client2 = new RaccoonAI({ secretKey: 'My Secret Key' });
     expect(client2.maxRetries).toEqual(2);
   });
 
   test('with environment variable arguments', () => {
     // set options via env var
     process.env['RACCOON_SECRET_KEY'] = 'My Secret Key';
-    const client = new Raccoonai();
+    const client = new RaccoonAI();
     expect(client.secretKey).toBe('My Secret Key');
   });
 
   test('with overridden environment variable arguments', () => {
     // set options via env var
     process.env['RACCOON_SECRET_KEY'] = 'another My Secret Key';
-    const client = new Raccoonai({ secretKey: 'My Secret Key' });
+    const client = new RaccoonAI({ secretKey: 'My Secret Key' });
     expect(client.secretKey).toBe('My Secret Key');
   });
 });
 
 describe('request building', () => {
-  const client = new Raccoonai({ secretKey: 'My Secret Key' });
+  const client = new RaccoonAI({ secretKey: 'My Secret Key' });
 
   describe('Content-Length', () => {
     test('handles multi-byte characters', () => {
@@ -273,7 +273,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Raccoonai({ secretKey: 'My Secret Key', timeout: 10, fetch: testFetch });
+    const client = new RaccoonAI({ secretKey: 'My Secret Key', timeout: 10, fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -303,7 +303,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Raccoonai({ secretKey: 'My Secret Key', fetch: testFetch, maxRetries: 4 });
+    const client = new RaccoonAI({ secretKey: 'My Secret Key', fetch: testFetch, maxRetries: 4 });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
 
@@ -327,7 +327,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Raccoonai({ secretKey: 'My Secret Key', fetch: testFetch, maxRetries: 4 });
+    const client = new RaccoonAI({ secretKey: 'My Secret Key', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -356,7 +356,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Raccoonai({
+    const client = new RaccoonAI({
       secretKey: 'My Secret Key',
       fetch: testFetch,
       maxRetries: 4,
@@ -389,7 +389,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Raccoonai({ secretKey: 'My Secret Key', fetch: testFetch, maxRetries: 4 });
+    const client = new RaccoonAI({ secretKey: 'My Secret Key', fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -416,7 +416,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Raccoonai({ secretKey: 'My Secret Key', fetch: testFetch });
+    const client = new RaccoonAI({ secretKey: 'My Secret Key', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -443,7 +443,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Raccoonai({ secretKey: 'My Secret Key', fetch: testFetch });
+    const client = new RaccoonAI({ secretKey: 'My Secret Key', fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);

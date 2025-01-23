@@ -1,8 +1,8 @@
-# Raccoonai Node API Library
+# Raccoon AI Node API Library
 
 [![NPM version](https://img.shields.io/npm/v/raccoonai.svg)](https://npmjs.org/package/raccoonai) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/raccoonai)
 
-This library provides convenient access to the Raccoonai REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Raccoon AI REST API from server-side TypeScript or JavaScript.
 
 The REST API documentation can be found on [docs.raccoonai.com](https://docs.raccoonai.com). The full API of this library can be found in [api.md](api.md).
 
@@ -23,9 +23,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Raccoonai from 'raccoonai';
+import RaccoonAI from 'raccoonai';
 
-const client = new Raccoonai({
+const client = new RaccoonAI({
   secretKey: process.env['RACCOON_SECRET_KEY'], // This is the default and can be omitted
   environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
@@ -48,19 +48,19 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Raccoonai from 'raccoonai';
+import RaccoonAI from 'raccoonai';
 
-const client = new Raccoonai({
+const client = new RaccoonAI({
   secretKey: process.env['RACCOON_SECRET_KEY'], // This is the default and can be omitted
   environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
 
 async function main() {
-  const params: Raccoonai.LamRunParams = {
+  const params: RaccoonAI.LamRunParams = {
     query: 'Find the price of iphone 16 on Amazon.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   };
-  const response: Raccoonai.LamRunResponse = await client.lam.run(params);
+  const response: RaccoonAI.LamRunResponse = await client.lam.run(params);
 }
 
 main();
@@ -80,7 +80,7 @@ async function main() {
   const response = await client.lam
     .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
     .catch(async (err) => {
-      if (err instanceof Raccoonai.APIError) {
+      if (err instanceof RaccoonAI.APIError) {
         console.log(err.status); // 400
         console.log(err.name); // BadRequestError
         console.log(err.headers); // {server: 'nginx', ...}
@@ -117,7 +117,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new Raccoonai({
+const client = new RaccoonAI({
   maxRetries: 0, // default is 2
 });
 
@@ -134,7 +134,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new Raccoonai({
+const client = new RaccoonAI({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -158,7 +158,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new Raccoonai();
+const client = new RaccoonAI();
 
 const response = await client.lam
   .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
@@ -223,13 +223,13 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "Raccoonai"`:
+add the following import before your first import `from "RaccoonAI"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
 import 'raccoonai/shims/web';
-import Raccoonai from 'raccoonai';
+import RaccoonAI from 'raccoonai';
 ```
 
 To do the inverse, add `import "raccoonai/shims/node"` (which does import polyfills).
@@ -242,9 +242,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Raccoonai from 'raccoonai';
+import RaccoonAI from 'raccoonai';
 
-const client = new Raccoonai({
+const client = new RaccoonAI({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -269,7 +269,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const client = new Raccoonai({
+const client = new RaccoonAI({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 

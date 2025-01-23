@@ -16,9 +16,9 @@ before making any information public.
 ## Reporting Non-SDK Related Security Issues
 
 If you encounter security issues that are not directly related to SDKs but pertain to the services
-or products provided by Raccoonai please follow the respective company's security reporting guidelines.
+or products provided by Raccoon AI please follow the respective company's security reporting guidelines.
 
-### Raccoonai Terms and Policies
+### Raccoon AI Terms and Policies
 
 Please contact dev-feedback@raccoonai.com for any questions or concerns regarding security of our services.
 

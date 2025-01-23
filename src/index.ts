@@ -41,7 +41,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['RACCOONAI_BASE_URL'].
+   * Defaults to process.env['RACCOON_AI_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -96,19 +96,19 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Raccoonai API.
+ * API Client for interfacing with the Raccoon AI API.
  */
-export class Raccoonai extends Core.APIClient {
+export class RaccoonAI extends Core.APIClient {
   secretKey: string;
 
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Raccoonai API.
+   * API Client for interfacing with the Raccoon AI API.
    *
    * @param {string | undefined} [opts.secretKey=process.env['RACCOON_SECRET_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['RACCOONAI_BASE_URL'] ?? https://api.flyingraccoon.tech] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['RACCOON_AI_BASE_URL'] ?? https://api.flyingraccoon.tech] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -117,13 +117,13 @@ export class Raccoonai extends Core.APIClient {
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
   constructor({
-    baseURL = Core.readEnv('RACCOONAI_BASE_URL'),
+    baseURL = Core.readEnv('RACCOON_AI_BASE_URL'),
     secretKey = Core.readEnv('RACCOON_SECRET_KEY'),
     ...opts
   }: ClientOptions = {}) {
     if (secretKey === undefined) {
-      throw new Errors.RaccoonaiError(
-        "The RACCOON_SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the Raccoonai client with an secretKey option, like new Raccoonai({ secretKey: 'My Secret Key' }).",
+      throw new Errors.RaccoonAIError(
+        "The RACCOON_SECRET_KEY environment variable is missing or empty; either provide it, or instantiate the RaccoonAI client with an secretKey option, like new RaccoonAI({ secretKey: 'My Secret Key' }).",
       );
     }
 
@@ -135,8 +135,8 @@ export class Raccoonai extends Core.APIClient {
     };
 
     if (baseURL && opts.environment) {
-      throw new Errors.RaccoonaiError(
-        'Ambiguous URL; The `baseURL` option (or RACCOONAI_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
+      throw new Errors.RaccoonAIError(
+        'Ambiguous URL; The `baseURL` option (or RACCOON_AI_BASE_URL env var) and the `environment` option are given. If you want to use the environment you must pass baseURL: null',
       );
     }
 
@@ -170,10 +170,10 @@ export class Raccoonai extends Core.APIClient {
     return { 'raccoon-secret-key': this.secretKey };
   }
 
-  static Raccoonai = this;
+  static RaccoonAI = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static RaccoonaiError = Errors.RaccoonaiError;
+  static RaccoonAIError = Errors.RaccoonAIError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -191,8 +191,8 @@ export class Raccoonai extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Raccoonai.Lam = Lam;
-export declare namespace Raccoonai {
+RaccoonAI.Lam = Lam;
+export declare namespace RaccoonAI {
   export type RequestOptions = Core.RequestOptions;
 
   export {
@@ -208,7 +208,7 @@ export declare namespace Raccoonai {
 
 export { toFile, fileFromPath } from './uploads';
 export {
-  RaccoonaiError,
+  RaccoonAIError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -223,4 +223,4 @@ export {
   UnprocessableEntityError,
 } from './error';
 
-export default Raccoonai;
+export default RaccoonAI;

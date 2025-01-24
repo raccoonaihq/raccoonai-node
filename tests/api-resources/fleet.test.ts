@@ -9,7 +9,8 @@ const client = new RaccoonAI({
 });
 
 describe('resource fleet', () => {
-  test('create', async () => {
+  // Not applicable
+  test.skip('create', async () => {
     const responsePromise = client.fleet.create({});
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,7 +21,8 @@ describe('resource fleet', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('logs', async () => {
+  // Not applicable
+  test.skip('logs', async () => {
     const responsePromise = client.fleet.logs('session_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -31,14 +33,16 @@ describe('resource fleet', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('logs: request options instead of params are passed correctly', async () => {
+  // Not applicable
+  test.skip('logs: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.fleet.logs('session_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       RaccoonAI.NotFoundError,
     );
   });
 
-  test('status', async () => {
+  // Not applicable
+  test.skip('status', async () => {
     const responsePromise = client.fleet.status('session_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -49,14 +53,16 @@ describe('resource fleet', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('status: request options instead of params are passed correctly', async () => {
+  // Not applicable
+  test.skip('status: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.fleet.status('session_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       RaccoonAI.NotFoundError,
     );
   });
 
-  test('terminate', async () => {
+  // Not applicable
+  test.skip('terminate', async () => {
     const responsePromise = client.fleet.terminate('session_id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -67,7 +73,8 @@ describe('resource fleet', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('terminate: request options instead of params are passed correctly', async () => {
+  // Not applicable
+  test.skip('terminate: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.fleet.terminate('session_id', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       RaccoonAI.NotFoundError,

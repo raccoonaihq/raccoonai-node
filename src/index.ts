@@ -7,15 +7,17 @@ import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
   Lam,
-  LamAdditionalPropertiesParams,
-  LamAdditionalPropertiesParamsNonStreaming,
-  LamAdditionalPropertiesParamsStreaming,
-  LamAdditionalPropertiesResponse,
   LamExtractParams,
+  LamExtractParamsNonStreaming,
+  LamExtractParamsStreaming,
   LamExtractResponse,
   LamIntegrationRunParams,
+  LamIntegrationRunParamsNonStreaming,
+  LamIntegrationRunParamsStreaming,
   LamIntegrationRunResponse,
   LamRunParams,
+  LamRunParamsNonStreaming,
+  LamRunParamsStreaming,
   LamRunResponse,
 } from './resources/lam';
 
@@ -201,16 +203,18 @@ export declare namespace RaccoonAI {
 
   export {
     Lam as Lam,
-    type LamAdditionalPropertiesResponse as LamAdditionalPropertiesResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
     type LamRunResponse as LamRunResponse,
-    type LamAdditionalPropertiesParams as LamAdditionalPropertiesParams,
-    type LamAdditionalPropertiesParamsNonStreaming as LamAdditionalPropertiesParamsNonStreaming,
-    type LamAdditionalPropertiesParamsStreaming as LamAdditionalPropertiesParamsStreaming,
     type LamExtractParams as LamExtractParams,
+    type LamExtractParamsNonStreaming as LamExtractParamsNonStreaming,
+    type LamExtractParamsStreaming as LamExtractParamsStreaming,
     type LamIntegrationRunParams as LamIntegrationRunParams,
+    type LamIntegrationRunParamsNonStreaming as LamIntegrationRunParamsNonStreaming,
+    type LamIntegrationRunParamsStreaming as LamIntegrationRunParamsStreaming,
     type LamRunParams as LamRunParams,
+    type LamRunParamsNonStreaming as LamRunParamsNonStreaming,
+    type LamRunParamsStreaming as LamRunParamsStreaming,
   };
 }
 

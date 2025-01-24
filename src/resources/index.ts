@@ -2,14 +2,16 @@
 
 export {
   Lam,
-  type LamAdditionalPropertiesResponse,
   type LamExtractResponse,
   type LamIntegrationRunResponse,
   type LamRunResponse,
-  type LamAdditionalPropertiesParams,
-  type LamAdditionalPropertiesParamsNonStreaming,
-  type LamAdditionalPropertiesParamsStreaming,
   type LamExtractParams,
+  type LamExtractParamsNonStreaming,
+  type LamExtractParamsStreaming,
   type LamIntegrationRunParams,
+  type LamIntegrationRunParamsNonStreaming,
+  type LamIntegrationRunParamsStreaming,
   type LamRunParams,
+  type LamRunParamsNonStreaming,
+  type LamRunParamsStreaming,
 } from './lam';

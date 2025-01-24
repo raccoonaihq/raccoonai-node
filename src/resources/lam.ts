@@ -8,34 +8,24 @@ import { Stream } from '../streaming';
 
 export class Lam extends APIResource {
   /**
-   * Lam Run Endpoint
-   */
-  additionalProperties(
-    body: LamAdditionalPropertiesParamsNonStreaming,
-    options?: Core.RequestOptions,
-  ): APIPromise<LamAdditionalPropertiesResponse>;
-  additionalProperties(
-    body: LamAdditionalPropertiesParamsStreaming,
-    options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamAdditionalPropertiesResponse>>;
-  additionalProperties(
-    body: LamAdditionalPropertiesParamsBase,
-    options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamAdditionalPropertiesResponse> | LamAdditionalPropertiesResponse>;
-  additionalProperties(
-    body: LamAdditionalPropertiesParams,
-    options?: Core.RequestOptions,
-  ): APIPromise<LamAdditionalPropertiesResponse> | APIPromise<Stream<LamAdditionalPropertiesResponse>> {
-    return this._client.post('/lam/run', { body, ...options, stream: body.stream ?? false }) as
-      | APIPromise<LamAdditionalPropertiesResponse>
-      | APIPromise<Stream<LamAdditionalPropertiesResponse>>;
-  }
-
-  /**
    * Lam Extract Endpoint
    */
-  extract(body: LamExtractParams, options?: Core.RequestOptions): Core.APIPromise<LamExtractResponse> {
-    return this._client.post('/lam/extract', { body, ...options });
+  extract(body: LamExtractParamsNonStreaming, options?: Core.RequestOptions): APIPromise<LamExtractResponse>;
+  extract(
+    body: LamExtractParamsStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<LamExtractResponse>>;
+  extract(
+    body: LamExtractParamsBase,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<LamExtractResponse> | LamExtractResponse>;
+  extract(
+    body: LamExtractParams,
+    options?: Core.RequestOptions,
+  ): APIPromise<LamExtractResponse> | APIPromise<Stream<LamExtractResponse>> {
+    return this._client.post('/lam/extract', { body, ...options, stream: body.stream ?? false }) as
+      | APIPromise<LamExtractResponse>
+      | APIPromise<Stream<LamExtractResponse>>;
   }
 
   /**
@@ -43,36 +33,46 @@ export class Lam extends APIResource {
    */
   integrationRun(
     appName: string,
+    body: LamIntegrationRunParamsNonStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<LamIntegrationRunResponse>;
+  integrationRun(
+    appName: string,
+    body: LamIntegrationRunParamsStreaming,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<LamIntegrationRunResponse>>;
+  integrationRun(
+    appName: string,
+    body: LamIntegrationRunParamsBase,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<LamIntegrationRunResponse> | LamIntegrationRunResponse>;
+  integrationRun(
+    appName: string,
     body: LamIntegrationRunParams,
     options?: Core.RequestOptions,
-  ): Core.APIPromise<LamIntegrationRunResponse> {
-    return this._client.post(`/lam/${appName}/run`, { body, ...options });
+  ): APIPromise<LamIntegrationRunResponse> | APIPromise<Stream<LamIntegrationRunResponse>> {
+    return this._client.post(`/lam/${appName}/run`, { body, ...options, stream: body.stream ?? false }) as
+      | APIPromise<LamIntegrationRunResponse>
+      | APIPromise<Stream<LamIntegrationRunResponse>>;
   }
 
   /**
    * Lam Run Endpoint
    */
-  run(body: LamRunParams, options?: Core.RequestOptions): Core.APIPromise<LamRunResponse> {
-    return this._client.post('/lam/run', { body, ...options });
+  run(body: LamRunParamsNonStreaming, options?: Core.RequestOptions): APIPromise<LamRunResponse>;
+  run(body: LamRunParamsStreaming, options?: Core.RequestOptions): APIPromise<Stream<LamRunResponse>>;
+  run(
+    body: LamRunParamsBase,
+    options?: Core.RequestOptions,
+  ): APIPromise<Stream<LamRunResponse> | LamRunResponse>;
+  run(
+    body: LamRunParams,
+    options?: Core.RequestOptions,
+  ): APIPromise<LamRunResponse> | APIPromise<Stream<LamRunResponse>> {
+    return this._client.post('/lam/run', { body, ...options, stream: body.stream ?? false }) as
+      | APIPromise<LamRunResponse>
+      | APIPromise<Stream<LamRunResponse>>;
   }
-}
-
-export interface LamAdditionalPropertiesResponse {
-  /**
-   * A message providing the thought summary if the status is processing currently.
-   */
-  message: string;
-
-  /**
-   * Additional metadata or details related to the run task.
-   */
-  properties: unknown;
-
-  /**
-   * The current status of the extraction task. For example: 'STARTING',
-   * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
-   */
-  task_status: string;
 }
 
 export interface LamExtractResponse {
@@ -169,59 +169,9 @@ export interface LamRunResponse {
   task_status: string;
 }
 
-export type LamAdditionalPropertiesParams =
-  | LamAdditionalPropertiesParamsNonStreaming
-  | LamAdditionalPropertiesParamsStreaming;
+export type LamExtractParams = LamExtractParamsNonStreaming | LamExtractParamsStreaming;
 
-export interface LamAdditionalPropertiesParamsBase {
-  /**
-   * The input query string for the request. This is typically the main prompt.
-   */
-  query: string;
-
-  /**
-   * The raccoon passcode associated with the end user on behalf of which the call is
-   * being made.
-   */
-  raccoon_passcode: string;
-
-  /**
-   * This is the entrypoint URL for the web agent.
-   */
-  app_url?: string | null;
-
-  /**
-   * The history of the conversation as a list of messages or objects you might use
-   * while building a chat app to give the model context of the past conversation.
-   */
-  chat_history?: Array<unknown> | null;
-
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream?: boolean | null;
-}
-
-export namespace LamAdditionalPropertiesParams {
-  export type LamAdditionalPropertiesParamsNonStreaming = LamAPI.LamAdditionalPropertiesParamsNonStreaming;
-  export type LamAdditionalPropertiesParamsStreaming = LamAPI.LamAdditionalPropertiesParamsStreaming;
-}
-
-export interface LamAdditionalPropertiesParamsNonStreaming extends LamAdditionalPropertiesParamsBase {
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream?: false | null;
-}
-
-export interface LamAdditionalPropertiesParamsStreaming extends LamAdditionalPropertiesParamsBase {
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream: true;
-}
-
-export interface LamExtractParams {
+export interface LamExtractParamsBase {
   /**
    * The input query string for the request. This is typically the main prompt.
    */
@@ -261,7 +211,28 @@ export interface LamExtractParams {
   stream?: boolean | null;
 }
 
-export interface LamIntegrationRunParams {
+export namespace LamExtractParams {
+  export type LamExtractParamsNonStreaming = LamAPI.LamExtractParamsNonStreaming;
+  export type LamExtractParamsStreaming = LamAPI.LamExtractParamsStreaming;
+}
+
+export interface LamExtractParamsNonStreaming extends LamExtractParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream?: false | null;
+}
+
+export interface LamExtractParamsStreaming extends LamExtractParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream: true;
+}
+
+export type LamIntegrationRunParams = LamIntegrationRunParamsNonStreaming | LamIntegrationRunParamsStreaming;
+
+export interface LamIntegrationRunParamsBase {
   /**
    * The raccoon passcode associated with the end user on behalf of which the call is
    * being made.
@@ -284,7 +255,28 @@ export interface LamIntegrationRunParams {
   stream?: boolean | null;
 }
 
-export interface LamRunParams {
+export namespace LamIntegrationRunParams {
+  export type LamIntegrationRunParamsNonStreaming = LamAPI.LamIntegrationRunParamsNonStreaming;
+  export type LamIntegrationRunParamsStreaming = LamAPI.LamIntegrationRunParamsStreaming;
+}
+
+export interface LamIntegrationRunParamsNonStreaming extends LamIntegrationRunParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream?: false | null;
+}
+
+export interface LamIntegrationRunParamsStreaming extends LamIntegrationRunParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream: true;
+}
+
+export type LamRunParams = LamRunParamsNonStreaming | LamRunParamsStreaming;
+
+export interface LamRunParamsBase {
   /**
    * The input query string for the request. This is typically the main prompt.
    */
@@ -313,17 +305,38 @@ export interface LamRunParams {
   stream?: boolean | null;
 }
 
+export namespace LamRunParams {
+  export type LamRunParamsNonStreaming = LamAPI.LamRunParamsNonStreaming;
+  export type LamRunParamsStreaming = LamAPI.LamRunParamsStreaming;
+}
+
+export interface LamRunParamsNonStreaming extends LamRunParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream?: false | null;
+}
+
+export interface LamRunParamsStreaming extends LamRunParamsBase {
+  /**
+   * Whether the response should be streamed back or not.
+   */
+  stream: true;
+}
+
 export declare namespace Lam {
   export {
-    type LamAdditionalPropertiesResponse as LamAdditionalPropertiesResponse,
     type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
     type LamRunResponse as LamRunResponse,
-    type LamAdditionalPropertiesParams as LamAdditionalPropertiesParams,
-    type LamAdditionalPropertiesParamsNonStreaming as LamAdditionalPropertiesParamsNonStreaming,
-    type LamAdditionalPropertiesParamsStreaming as LamAdditionalPropertiesParamsStreaming,
     type LamExtractParams as LamExtractParams,
+    type LamExtractParamsNonStreaming as LamExtractParamsNonStreaming,
+    type LamExtractParamsStreaming as LamExtractParamsStreaming,
     type LamIntegrationRunParams as LamIntegrationRunParams,
+    type LamIntegrationRunParamsNonStreaming as LamIntegrationRunParamsNonStreaming,
+    type LamIntegrationRunParamsStreaming as LamIntegrationRunParamsStreaming,
     type LamRunParams as LamRunParams,
+    type LamRunParamsNonStreaming as LamRunParamsNonStreaming,
+    type LamRunParamsStreaming as LamRunParamsStreaming,
   };
 }

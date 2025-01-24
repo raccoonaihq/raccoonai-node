@@ -120,15 +120,15 @@ export interface FleetCreateParams {
   raccoon_passcode?: string | null;
 
   /**
+   * The timeout for the browser session in seconds.
+   */
+  session_timeout?: number | null;
+
+  /**
    * Configuration settings for the browser, such as viewport size and User-Agent
    * string.
    */
   settings?: FleetCreateParams.Settings | null;
-
-  /**
-   * The timeout for the browser session in seconds.
-   */
-  timeout?: number | null;
 
   /**
    * The entrypoint url for the session.

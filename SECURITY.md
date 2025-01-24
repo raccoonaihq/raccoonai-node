@@ -20,7 +20,7 @@ or products provided by Raccoon AI please follow the respective company's securi
 
 ### Raccoon AI Terms and Policies
 
-Please contact dev-feedback@raccoonai.com for any questions or concerns regarding security of our services.
+Please contact team@flyingraccoon.tech for any questions or concerns regarding security of our services.
 
 ---
 

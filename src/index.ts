@@ -6,6 +6,14 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  Fleet,
+  FleetCreateParams,
+  FleetCreateResponse,
+  FleetLogsResponse,
+  FleetStatusResponse,
+  FleetTerminateResponse,
+} from './resources/fleet';
+import {
   Lam,
   LamExtractParams,
   LamExtractParamsNonStreaming,
@@ -160,6 +168,7 @@ export class RaccoonAI extends Core.APIClient {
   }
 
   lam: API.Lam = new API.Lam(this);
+  fleet: API.Fleet = new API.Fleet(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -198,6 +207,7 @@ export class RaccoonAI extends Core.APIClient {
 }
 
 RaccoonAI.Lam = Lam;
+RaccoonAI.Fleet = Fleet;
 export declare namespace RaccoonAI {
   export type RequestOptions = Core.RequestOptions;
 
@@ -215,6 +225,15 @@ export declare namespace RaccoonAI {
     type LamRunParams as LamRunParams,
     type LamRunParamsNonStreaming as LamRunParamsNonStreaming,
     type LamRunParamsStreaming as LamRunParamsStreaming,
+  };
+
+  export {
+    Fleet as Fleet,
+    type FleetCreateResponse as FleetCreateResponse,
+    type FleetLogsResponse as FleetLogsResponse,
+    type FleetStatusResponse as FleetStatusResponse,
+    type FleetTerminateResponse as FleetTerminateResponse,
+    type FleetCreateParams as FleetCreateParams,
   };
 }
 

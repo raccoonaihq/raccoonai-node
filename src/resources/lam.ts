@@ -83,6 +83,11 @@ export interface LamExtractResponse {
   data: Array<unknown>;
 
   /**
+   * The Livestream URL
+   */
+  livestream_url: string;
+
+  /**
    * A message providing the thought summary if the status is processing currently.
    */
   message: string;
@@ -111,6 +116,11 @@ export namespace LamIntegrationRunResponse {
     integration_id: string;
 
     /**
+     * The Livestream URL
+     */
+    livestream_url: string;
+
+    /**
      * A message providing the thought summary if the status is processing currently.
      */
     message: string;
@@ -121,7 +131,7 @@ export namespace LamIntegrationRunResponse {
     properties: unknown;
 
     /**
-     * The current status of the extraction task. For example: 'STARTING',
+     * The current status of the integration task. For example: 'STARTING',
      * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
      */
     task_status: string;
@@ -134,6 +144,11 @@ export namespace LamIntegrationRunResponse {
     integration_id: string;
 
     /**
+     * The Livestream URL
+     */
+    livestream_url: string;
+
+    /**
      * A message providing the thought summary if the status is processing currently.
      */
     message: string;
@@ -144,7 +159,7 @@ export namespace LamIntegrationRunResponse {
     properties: unknown;
 
     /**
-     * The current status of the extraction task. For example: 'STARTING',
+     * The current status of the integration task. For example: 'STARTING',
      * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
      */
     task_status: string;
@@ -152,6 +167,11 @@ export namespace LamIntegrationRunResponse {
 }
 
 export interface LamRunResponse {
+  /**
+   * The Livestream URL
+   */
+  livestream_url: string;
+
   /**
    * A message providing the thought summary if the status is processing currently.
    */
@@ -163,8 +183,8 @@ export interface LamRunResponse {
   properties: unknown;
 
   /**
-   * The current status of the extraction task. For example: 'STARTING',
-   * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
+   * The current status of the run task. For example: 'STARTING', 'PROCESSING',
+   * 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
    */
   task_status: string;
 }
@@ -182,6 +202,12 @@ export interface LamExtractParamsBase {
    * being made.
    */
   raccoon_passcode: string;
+
+  /**
+   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * solving.
+   */
+  advanced?: LamExtractParams.Advanced | null;
 
   /**
    * This is the entrypoint URL for the web agent.
@@ -212,6 +238,27 @@ export interface LamExtractParamsBase {
 }
 
 export namespace LamExtractParams {
+  /**
+   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * solving.
+   */
+  export interface Advanced {
+    /**
+     * Whether to block advertisements during the browser session.
+     */
+    block_ads?: boolean | null;
+
+    /**
+     * Whether to use a proxy for the browser session.
+     */
+    proxy?: boolean | null;
+
+    /**
+     * Whether to attempt automatic CAPTCHA solving.
+     */
+    solve_captchas?: boolean | null;
+  }
+
   export type LamExtractParamsNonStreaming = LamAPI.LamExtractParamsNonStreaming;
   export type LamExtractParamsStreaming = LamAPI.LamExtractParamsStreaming;
 }
@@ -240,6 +287,12 @@ export interface LamIntegrationRunParamsBase {
   raccoon_passcode: string;
 
   /**
+   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * solving.
+   */
+  advanced?: LamIntegrationRunParams.Advanced | null;
+
+  /**
    * The unique identifier for the integration being called.
    */
   integration_id?: string | null;
@@ -256,6 +309,27 @@ export interface LamIntegrationRunParamsBase {
 }
 
 export namespace LamIntegrationRunParams {
+  /**
+   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * solving.
+   */
+  export interface Advanced {
+    /**
+     * Whether to block advertisements during the browser session.
+     */
+    block_ads?: boolean | null;
+
+    /**
+     * Whether to use a proxy for the browser session.
+     */
+    proxy?: boolean | null;
+
+    /**
+     * Whether to attempt automatic CAPTCHA solving.
+     */
+    solve_captchas?: boolean | null;
+  }
+
   export type LamIntegrationRunParamsNonStreaming = LamAPI.LamIntegrationRunParamsNonStreaming;
   export type LamIntegrationRunParamsStreaming = LamAPI.LamIntegrationRunParamsStreaming;
 }
@@ -289,6 +363,12 @@ export interface LamRunParamsBase {
   raccoon_passcode: string;
 
   /**
+   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * solving.
+   */
+  advanced?: LamRunParams.Advanced | null;
+
+  /**
    * This is the entrypoint URL for the web agent.
    */
   app_url?: string | null;
@@ -306,6 +386,27 @@ export interface LamRunParamsBase {
 }
 
 export namespace LamRunParams {
+  /**
+   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * solving.
+   */
+  export interface Advanced {
+    /**
+     * Whether to block advertisements during the browser session.
+     */
+    block_ads?: boolean | null;
+
+    /**
+     * Whether to use a proxy for the browser session.
+     */
+    proxy?: boolean | null;
+
+    /**
+     * Whether to attempt automatic CAPTCHA solving.
+     */
+    solve_captchas?: boolean | null;
+  }
+
   export type LamRunParamsNonStreaming = LamAPI.LamRunParamsNonStreaming;
   export type LamRunParamsStreaming = LamAPI.LamRunParamsStreaming;
 }

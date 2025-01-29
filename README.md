@@ -36,7 +36,7 @@ async function main() {
     raccoon_passcode: '<end-user-raccoon-passcode>',
   });
 
-  console.log(response.message);
+  console.log(response.livestream_url);
 }
 
 main();
@@ -57,7 +57,7 @@ const stream = await client.lam.run({
   stream: true,
 });
 for await (const lamRunResponse of stream) {
-  console.log(lamRunResponse.message);
+  console.log(lamRunResponse.livestream_url);
 }
 ```
 
@@ -192,7 +192,7 @@ const { data: response, response: raw } = await client.lam
   .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.message);
+console.log(response.livestream_url);
 ```
 
 ### Making custom/undocumented requests

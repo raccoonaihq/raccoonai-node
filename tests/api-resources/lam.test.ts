@@ -27,6 +27,7 @@ describe('resource lam', () => {
     const response = await client.lam.extract({
       query: 'Find YCombinator startups who got funded in W24.',
       raccoon_passcode: '<end-user-raccoon-passcode>',
+      advanced: { block_ads: true, proxy: true, solve_captchas: true },
       app_url: 'https://www.ycombinator.com/companies',
       chat_history: [{}],
       max_count: 5,
@@ -56,6 +57,7 @@ describe('resource lam', () => {
   test('integrationRun: required and optional params', async () => {
     const response = await client.lam.integrationRun('app_name', {
       raccoon_passcode: 'raccoon_passcode',
+      advanced: { block_ads: true, proxy: true, solve_captchas: true },
       integration_id: 'integration_id',
       properties: {},
       stream: false,
@@ -80,6 +82,7 @@ describe('resource lam', () => {
     const response = await client.lam.run({
       query: 'Find the price of iphone 16 on Amazon.',
       raccoon_passcode: '<end-user-raccoon-passcode>',
+      advanced: { block_ads: true, proxy: true, solve_captchas: true },
       app_url: 'https://www.amazon.com',
       chat_history: [{}],
       stream: false,

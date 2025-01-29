@@ -35,6 +35,11 @@ export class Fleet extends APIResource {
 
 export interface FleetCreateResponse {
   /**
+   * The Livestream URL
+   */
+  livestream_url: string;
+
+  /**
    * A unique identifier for the created session.
    */
   session_id: string;

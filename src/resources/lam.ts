@@ -131,7 +131,7 @@ export namespace LamIntegrationRunResponse {
     properties: unknown;
 
     /**
-     * The current status of the integration task. For example: 'STARTING',
+     * The current status of the extraction task. For example: 'STARTING',
      * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
      */
     task_status: string;
@@ -159,7 +159,7 @@ export namespace LamIntegrationRunResponse {
     properties: unknown;
 
     /**
-     * The current status of the integration task. For example: 'STARTING',
+     * The current status of the extraction task. For example: 'STARTING',
      * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
      */
     task_status: string;
@@ -183,8 +183,8 @@ export interface LamRunResponse {
   properties: unknown;
 
   /**
-   * The current status of the run task. For example: 'STARTING', 'PROCESSING',
-   * 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
+   * The current status of the extraction task. For example: 'STARTING',
+   * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
    */
   task_status: string;
 }
@@ -204,7 +204,7 @@ export interface LamExtractParamsBase {
   raccoon_passcode: string;
 
   /**
-   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
    */
   advanced?: LamExtractParams.Advanced | null;
@@ -239,7 +239,7 @@ export interface LamExtractParamsBase {
 
 export namespace LamExtractParams {
   /**
-   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
    */
   export interface Advanced {
@@ -287,7 +287,7 @@ export interface LamIntegrationRunParamsBase {
   raccoon_passcode: string;
 
   /**
-   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
    */
   advanced?: LamIntegrationRunParams.Advanced | null;
@@ -310,7 +310,7 @@ export interface LamIntegrationRunParamsBase {
 
 export namespace LamIntegrationRunParams {
   /**
-   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
    */
   export interface Advanced {
@@ -363,7 +363,7 @@ export interface LamRunParamsBase {
   raccoon_passcode: string;
 
   /**
-   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
    */
   advanced?: LamRunParams.Advanced | null;
@@ -387,7 +387,7 @@ export interface LamRunParamsBase {
 
 export namespace LamRunParams {
   /**
-   * Advanced configuration options for the task, such as ad-blocking and CAPTCHA
+   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
    */
   export interface Advanced {

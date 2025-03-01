@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-03-01)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#7](https://github.com/raccoonaihq/raccoonai-node/issues/7)) ([0c98e03](https://github.com/raccoonaihq/raccoonai-node/commit/0c98e031e7499dd5b5aae9b78c83b310f4a326bc))
+
 ## 0.1.0-alpha.2 (2025-02-22)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)

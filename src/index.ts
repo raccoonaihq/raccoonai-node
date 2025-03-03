@@ -1,29 +1,39 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { type Agent } from './_shims/index';
+import * as qs from './internal/qs';
 import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  ExtensionAllResponse,
+  ExtensionDeleteResponse,
+  ExtensionGetResponse,
+  ExtensionUploadParams,
+  ExtensionUploadResponse,
+  Extensions,
+} from './resources/extensions';
+import {
   Fleet,
   FleetCreateParams,
   FleetCreateResponse,
   FleetLogsResponse,
+  FleetSessionsParams,
+  FleetSessionsResponse,
   FleetStatusResponse,
   FleetTerminateResponse,
 } from './resources/fleet';
 import {
   Lam,
-  LamIntegrationRunParams,
-  LamIntegrationRunParamsNonStreaming,
-  LamIntegrationRunParamsStreaming,
-  LamIntegrationRunResponse,
   LamRunParams,
   LamRunParamsNonStreaming,
   LamRunParamsStreaming,
   LamRunResponse,
+  LamTasksParams,
+  LamTasksResponse,
 } from './resources/lam';
+import { Tail } from './resources/tail/tail';
 
 const environments = {
   production: 'https://api.flyingraccoon.tech',
@@ -164,7 +174,9 @@ export class RaccoonAI extends Core.APIClient {
   }
 
   lam: API.Lam = new API.Lam(this);
+  tail: API.Tail = new API.Tail(this);
   fleet: API.Fleet = new API.Fleet(this);
+  extensions: API.Extensions = new API.Extensions(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -179,6 +191,10 @@ export class RaccoonAI extends Core.APIClient {
 
   protected override authHeaders(opts: Core.FinalRequestOptions): Core.Headers {
     return { 'raccoon-secret-key': this.secretKey };
+  }
+
+  protected override stringifyQuery(query: Record<string, unknown>): string {
+    return qs.stringify(query, { arrayFormat: 'comma' });
   }
 
   static RaccoonAI = this;
@@ -203,29 +219,42 @@ export class RaccoonAI extends Core.APIClient {
 }
 
 RaccoonAI.Lam = Lam;
+RaccoonAI.Tail = Tail;
 RaccoonAI.Fleet = Fleet;
+RaccoonAI.Extensions = Extensions;
 export declare namespace RaccoonAI {
   export type RequestOptions = Core.RequestOptions;
 
   export {
     Lam as Lam,
-    type LamIntegrationRunResponse as LamIntegrationRunResponse,
     type LamRunResponse as LamRunResponse,
-    type LamIntegrationRunParams as LamIntegrationRunParams,
-    type LamIntegrationRunParamsNonStreaming as LamIntegrationRunParamsNonStreaming,
-    type LamIntegrationRunParamsStreaming as LamIntegrationRunParamsStreaming,
+    type LamTasksResponse as LamTasksResponse,
     type LamRunParams as LamRunParams,
     type LamRunParamsNonStreaming as LamRunParamsNonStreaming,
     type LamRunParamsStreaming as LamRunParamsStreaming,
+    type LamTasksParams as LamTasksParams,
   };
+
+  export { Tail as Tail };
 
   export {
     Fleet as Fleet,
     type FleetCreateResponse as FleetCreateResponse,
     type FleetLogsResponse as FleetLogsResponse,
+    type FleetSessionsResponse as FleetSessionsResponse,
     type FleetStatusResponse as FleetStatusResponse,
     type FleetTerminateResponse as FleetTerminateResponse,
     type FleetCreateParams as FleetCreateParams,
+    type FleetSessionsParams as FleetSessionsParams,
+  };
+
+  export {
+    Extensions as Extensions,
+    type ExtensionDeleteResponse as ExtensionDeleteResponse,
+    type ExtensionAllResponse as ExtensionAllResponse,
+    type ExtensionGetResponse as ExtensionGetResponse,
+    type ExtensionUploadResponse as ExtensionUploadResponse,
+    type ExtensionUploadParams as ExtensionUploadParams,
   };
 }
 

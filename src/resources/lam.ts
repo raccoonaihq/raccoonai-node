@@ -1,40 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../resource';
+import { isRequestOptions } from '../core';
 import { APIPromise } from '../core';
 import * as Core from '../core';
 import * as LamAPI from './lam';
 import { Stream } from '../streaming';
 
 export class Lam extends APIResource {
-  /**
-   * Lam Integrations Endpoint
-   */
-  integrationRun(
-    appName: string,
-    body: LamIntegrationRunParamsNonStreaming,
-    options?: Core.RequestOptions,
-  ): APIPromise<LamIntegrationRunResponse>;
-  integrationRun(
-    appName: string,
-    body: LamIntegrationRunParamsStreaming,
-    options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamIntegrationRunResponse>>;
-  integrationRun(
-    appName: string,
-    body: LamIntegrationRunParamsBase,
-    options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamIntegrationRunResponse> | LamIntegrationRunResponse>;
-  integrationRun(
-    appName: string,
-    body: LamIntegrationRunParams,
-    options?: Core.RequestOptions,
-  ): APIPromise<LamIntegrationRunResponse> | APIPromise<Stream<LamIntegrationRunResponse>> {
-    return this._client.post(`/lam/${appName}/run`, { body, ...options, stream: body.stream ?? false }) as
-      | APIPromise<LamIntegrationRunResponse>
-      | APIPromise<Stream<LamIntegrationRunResponse>>;
-  }
-
   /**
    * Lam Run Endpoint
    */
@@ -52,67 +25,20 @@ export class Lam extends APIResource {
       | APIPromise<LamRunResponse>
       | APIPromise<Stream<LamRunResponse>>;
   }
-}
 
-export type LamIntegrationRunResponse =
-  | Array<LamIntegrationRunResponse.UnionMember0>
-  | LamIntegrationRunResponse.IntegrationResponse;
-
-export namespace LamIntegrationRunResponse {
-  export interface UnionMember0 {
-    /**
-     * A unique identifier for the integration in use.
-     */
-    integration_id: string;
-
-    /**
-     * The Livestream URL
-     */
-    livestream_url: string;
-
-    /**
-     * A message providing the thought summary if the status is processing currently.
-     */
-    message: string;
-
-    /**
-     * Additional metadata or details related to the integration task.
-     */
-    properties: unknown;
-
-    /**
-     * The current status of the extraction task. For example: 'STARTING',
-     * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
-     */
-    task_status: 'STARTING' | 'PROCESSING' | 'DONE' | 'HUMAN_INTERACTION' | 'FAILURE';
-  }
-
-  export interface IntegrationResponse {
-    /**
-     * A unique identifier for the integration in use.
-     */
-    integration_id: string;
-
-    /**
-     * The Livestream URL
-     */
-    livestream_url: string;
-
-    /**
-     * A message providing the thought summary if the status is processing currently.
-     */
-    message: string;
-
-    /**
-     * Additional metadata or details related to the integration task.
-     */
-    properties: unknown;
-
-    /**
-     * The current status of the extraction task. For example: 'STARTING',
-     * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
-     */
-    task_status: 'STARTING' | 'PROCESSING' | 'DONE' | 'HUMAN_INTERACTION' | 'FAILURE';
+  /**
+   * Get Tasks Endpoint
+   */
+  tasks(query?: LamTasksParams, options?: Core.RequestOptions): Core.APIPromise<LamTasksResponse>;
+  tasks(options?: Core.RequestOptions): Core.APIPromise<LamTasksResponse>;
+  tasks(
+    query: LamTasksParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<LamTasksResponse> {
+    if (isRequestOptions(query)) {
+      return this.tasks({}, query);
+    }
+    return this._client.get('/lam/tasks', { query, ...options });
   }
 }
 
@@ -145,112 +71,75 @@ export interface LamRunResponse {
   task_status: 'STARTING' | 'PROCESSING' | 'DONE' | 'HUMAN_INTERACTION' | 'FAILURE';
 }
 
-export type LamIntegrationRunParams = LamIntegrationRunParamsNonStreaming | LamIntegrationRunParamsStreaming;
-
-export interface LamIntegrationRunParamsBase {
+export interface LamTasksResponse {
   /**
-   * The raccoon passcode associated with the end user on behalf of which the call is
-   * being made.
+   * Metadata about the task list.
    */
-  raccoon_passcode: string;
+  meta: LamTasksResponse.Meta;
 
   /**
-   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
-   * solving.
+   * List of tasks.
    */
-  advanced?: LamIntegrationRunParams.Advanced | null;
-
-  /**
-   * The unique identifier for the integration being called.
-   */
-  integration_id?: string | null;
-
-  /**
-   * Additional properties or data related to the particular integration.
-   */
-  properties?: unknown | null;
-
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream?: boolean | null;
+  tasks: Array<LamTasksResponse.Task>;
 }
 
-export namespace LamIntegrationRunParams {
+export namespace LamTasksResponse {
   /**
-   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
-   * solving.
+   * Metadata about the task list.
    */
-  export interface Advanced {
+  export interface Meta {
     /**
-     * Whether to block advertisements during the browser session.
+     * The current page number.
      */
-    block_ads?: boolean | null;
+    currentPage: number;
 
     /**
-     * list of extension ids
+     * Total number of pages available.
      */
-    extension_ids?: Array<unknown> | null;
+    totalPages: number;
 
     /**
-     * Proxy details for the browser session.
+     * Total number of records across all pages.
      */
-    proxy?: Advanced.Proxy | null;
-
-    /**
-     * Whether to attempt automatic CAPTCHA solving.
-     */
-    solve_captchas?: boolean | null;
+    totalRecords: number;
   }
 
-  export namespace Advanced {
+  export interface Task {
     /**
-     * Proxy details for the browser session.
+     * Time taken for the task execution (in seconds).
      */
-    export interface Proxy {
-      /**
-       * Target city.
-       */
-      city?: string | null;
+    executionTime: number;
 
-      /**
-       * Target country (2-letter ISO code).
-       */
-      country?: string | null;
+    /**
+     * The type of execution performed (e.g., 'run', 'extract').
+     */
+    executionType: 'run' | 'extract';
 
-      /**
-       * Whether to use a proxy for the browser session.
-       */
-      enable?: boolean;
+    /**
+     * Input parameters used for the task execution.
+     */
+    inputs: unknown;
 
-      /**
-       * Target state (2-letter code).
-       */
-      state?: string | null;
+    /**
+     * Output generated by the task execution.
+     */
+    output: Array<unknown>;
 
-      /**
-       * Target postal code.
-       */
-      zip?: number | null;
-    }
+    /**
+     * Passcode associated with the user.
+     */
+    raccoonPasscode: string;
+
+    /**
+     * Unique identifier for the task.
+     */
+    taskId: string;
+
+    /**
+     * Unix timestamp (in seconds) indicating when the task was created.
+     */
+    timestamp: number;
   }
-
-  export type LamIntegrationRunParamsNonStreaming = LamAPI.LamIntegrationRunParamsNonStreaming;
-  export type LamIntegrationRunParamsStreaming = LamAPI.LamIntegrationRunParamsStreaming;
-}
-
-export interface LamIntegrationRunParamsNonStreaming extends LamIntegrationRunParamsBase {
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream?: false | null;
-}
-
-export interface LamIntegrationRunParamsStreaming extends LamIntegrationRunParamsBase {
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream: true;
 }
 
 export type LamRunParams = LamRunParamsNonStreaming | LamRunParamsStreaming;
@@ -383,15 +272,60 @@ export interface LamRunParamsStreaming extends LamRunParamsBase {
   stream: true;
 }
 
+export interface LamTasksParams {
+  /**
+   * Filter tasks created before this Unix timestamp (in milliseconds).
+   */
+  end_time?: number | null;
+
+  /**
+   * Filter tasks by execution type (e.g., 'run', 'extract').
+   */
+  executionType?: Array<'run' | 'extract' | 'fleet'> | null;
+
+  /**
+   * Number of tasks per page (maximum 100).
+   */
+  limit?: number | null;
+
+  /**
+   * Page number for pagination.
+   */
+  page?: number | null;
+
+  /**
+   * Filter tasks by Raccoon passcode.
+   */
+  raccoon_passcode?: string | null;
+
+  /**
+   * Field to sort tasks by (e.g., 'timestamp', 'executionTime').
+   */
+  sort_by?: 'timestamp' | 'executionTime' | 'taskId' | 'status' | 'executionType' | null;
+
+  /**
+   * Sort order ('ascend' or 'descend').
+   */
+  sort_order?: 'ascend' | 'descend' | null;
+
+  /**
+   * Filter tasks created after this Unix timestamp (in milliseconds).
+   */
+  start_time?: number | null;
+
+  /**
+   * Filter tasks by a specific task ID.
+   */
+  task_id?: string | null;
+}
+
 export declare namespace Lam {
   export {
-    type LamIntegrationRunResponse as LamIntegrationRunResponse,
     type LamRunResponse as LamRunResponse,
-    type LamIntegrationRunParams as LamIntegrationRunParams,
-    type LamIntegrationRunParamsNonStreaming as LamIntegrationRunParamsNonStreaming,
-    type LamIntegrationRunParamsStreaming as LamIntegrationRunParamsStreaming,
+    type LamTasksResponse as LamTasksResponse,
     type LamRunParams as LamRunParams,
     type LamRunParamsNonStreaming as LamRunParamsNonStreaming,
     type LamRunParamsStreaming as LamRunParamsStreaming,
+    type LamTasksParams as LamTasksParams,
   };
 }

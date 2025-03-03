@@ -9,40 +9,6 @@ const client = new RaccoonAI({
 });
 
 describe('resource lam', () => {
-  test('extract: only required params', async () => {
-    const responsePromise = client.lam.extract({
-      query: 'Find YCombinator startups who got funded in W24.',
-      raccoon_passcode: '<end-user-raccoon-passcode>',
-    });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('extract: required and optional params', async () => {
-    const response = await client.lam.extract({
-      query: 'Find YCombinator startups who got funded in W24.',
-      raccoon_passcode: '<end-user-raccoon-passcode>',
-      advanced: { block_ads: true, proxy: true, solve_captchas: true },
-      app_url: 'https://www.ycombinator.com/companies',
-      chat_history: [{}],
-      max_count: 5,
-      schema: {
-        address: {
-          city: 'What city is the company located in?',
-          country: 'Which country is the company located in?',
-        },
-        funding_season: 'The funding season like W24 as a string',
-        name: 'Name of the company as a string',
-      },
-      stream: false,
-    });
-  });
-
   test('integrationRun: only required params', async () => {
     const responsePromise = client.lam.integrationRun('app_name', { raccoon_passcode: 'raccoon_passcode' });
     const rawResponse = await responsePromise.asResponse();
@@ -57,7 +23,12 @@ describe('resource lam', () => {
   test('integrationRun: required and optional params', async () => {
     const response = await client.lam.integrationRun('app_name', {
       raccoon_passcode: 'raccoon_passcode',
-      advanced: { block_ads: true, proxy: true, solve_captchas: true },
+      advanced: {
+        block_ads: true,
+        extension_ids: ['df2399ea-a938-438f-9d4b-ef3bc95cf8af'],
+        proxy: { city: 'sanfrancisco', country: 'us', enable: true, state: 'ca', zip: 94102 },
+        solve_captchas: true,
+      },
       integration_id: 'integration_id',
       properties: {},
       stream: false,
@@ -66,7 +37,7 @@ describe('resource lam', () => {
 
   test('run: only required params', async () => {
     const responsePromise = client.lam.run({
-      query: 'Find the price of iphone 16 on Amazon.',
+      query: 'Find YCombinator startups who got funded in W24.',
       raccoon_passcode: '<end-user-raccoon-passcode>',
     });
     const rawResponse = await responsePromise.asResponse();
@@ -80,11 +51,26 @@ describe('resource lam', () => {
 
   test('run: required and optional params', async () => {
     const response = await client.lam.run({
-      query: 'Find the price of iphone 16 on Amazon.',
+      query: 'Find YCombinator startups who got funded in W24.',
       raccoon_passcode: '<end-user-raccoon-passcode>',
-      advanced: { block_ads: true, proxy: true, solve_captchas: true },
-      app_url: 'https://www.amazon.com',
+      advanced: {
+        block_ads: true,
+        extension_ids: ['df2399ea-a938-438f-9d4b-ef3bc95cf8af'],
+        proxy: { city: 'sanfrancisco', country: 'us', enable: true, state: 'ca', zip: 94102 },
+        solve_captchas: true,
+      },
+      app_url: 'https://www.ycombinator.com/companies',
       chat_history: [{}],
+      max_count: 5,
+      mode: 'deepsearch',
+      schema: {
+        address: {
+          city: 'What city is the company located in?',
+          country: 'Which country is the company located in?',
+        },
+        funding_season: 'The funding season like W24 as a string',
+        name: 'Name of the company as a string',
+      },
       stream: false,
     });
   });

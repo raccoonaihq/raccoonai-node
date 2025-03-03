@@ -8,27 +8,6 @@ import { Stream } from '../streaming';
 
 export class Lam extends APIResource {
   /**
-   * Lam Extract Endpoint
-   */
-  extract(body: LamExtractParamsNonStreaming, options?: Core.RequestOptions): APIPromise<LamExtractResponse>;
-  extract(
-    body: LamExtractParamsStreaming,
-    options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamExtractResponse>>;
-  extract(
-    body: LamExtractParamsBase,
-    options?: Core.RequestOptions,
-  ): APIPromise<Stream<LamExtractResponse> | LamExtractResponse>;
-  extract(
-    body: LamExtractParams,
-    options?: Core.RequestOptions,
-  ): APIPromise<LamExtractResponse> | APIPromise<Stream<LamExtractResponse>> {
-    return this._client.post('/lam/extract', { body, ...options, stream: body.stream ?? false }) as
-      | APIPromise<LamExtractResponse>
-      | APIPromise<Stream<LamExtractResponse>>;
-  }
-
-  /**
    * Lam Integrations Endpoint
    */
   integrationRun(
@@ -75,35 +54,6 @@ export class Lam extends APIResource {
   }
 }
 
-export interface LamExtractResponse {
-  /**
-   * The extracted data as a list of objects when the status is DONE. Each object
-   * represents an extracted entity.
-   */
-  data: Array<unknown>;
-
-  /**
-   * The Livestream URL
-   */
-  livestream_url: string;
-
-  /**
-   * A message providing the thought summary if the status is processing currently.
-   */
-  message: string;
-
-  /**
-   * Additional metadata or information related to the extraction task.
-   */
-  properties: unknown;
-
-  /**
-   * The current status of the extraction task. For example: 'STARTING',
-   * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
-   */
-  task_status: string;
-}
-
 export type LamIntegrationRunResponse =
   | Array<LamIntegrationRunResponse.UnionMember0>
   | LamIntegrationRunResponse.IntegrationResponse;
@@ -134,7 +84,7 @@ export namespace LamIntegrationRunResponse {
      * The current status of the extraction task. For example: 'STARTING',
      * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
      */
-    task_status: string;
+    task_status: 'STARTING' | 'PROCESSING' | 'DONE' | 'HUMAN_INTERACTION' | 'FAILURE';
   }
 
   export interface IntegrationResponse {
@@ -162,11 +112,17 @@ export namespace LamIntegrationRunResponse {
      * The current status of the extraction task. For example: 'STARTING',
      * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
      */
-    task_status: string;
+    task_status: 'STARTING' | 'PROCESSING' | 'DONE' | 'HUMAN_INTERACTION' | 'FAILURE';
   }
 }
 
 export interface LamRunResponse {
+  /**
+   * The extracted data as a list of objects when the status is DONE. Each object
+   * represents an extracted entity.
+   */
+  data: Array<unknown>;
+
   /**
    * The Livestream URL
    */
@@ -186,95 +142,7 @@ export interface LamRunResponse {
    * The current status of the extraction task. For example: 'STARTING',
    * 'PROCESSING', 'DONE', 'HUMAN_INTERACTION', or 'FAILURE'.
    */
-  task_status: string;
-}
-
-export type LamExtractParams = LamExtractParamsNonStreaming | LamExtractParamsStreaming;
-
-export interface LamExtractParamsBase {
-  /**
-   * The input query string for the request. This is typically the main prompt.
-   */
-  query: string;
-
-  /**
-   * The raccoon passcode associated with the end user on behalf of which the call is
-   * being made.
-   */
-  raccoon_passcode: string;
-
-  /**
-   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
-   * solving.
-   */
-  advanced?: LamExtractParams.Advanced | null;
-
-  /**
-   * This is the entrypoint URL for the web agent.
-   */
-  app_url?: string | null;
-
-  /**
-   * The history of the conversation as a list of messages or objects you might use
-   * while building a chat app to give the model context of the past conversation.
-   */
-  chat_history?: Array<unknown> | null;
-
-  /**
-   * The maximum number of results to extract.
-   */
-  max_count?: number | null;
-
-  /**
-   * The expected schema for the response. This is a dictionary where the keys
-   * describe the fields and the values describe their purposes.
-   */
-  schema?: unknown;
-
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream?: boolean | null;
-}
-
-export namespace LamExtractParams {
-  /**
-   * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
-   * solving.
-   */
-  export interface Advanced {
-    /**
-     * Whether to block advertisements during the browser session.
-     */
-    block_ads?: boolean | null;
-
-    /**
-     * Whether to use a proxy for the browser session.
-     */
-    proxy?: boolean | null;
-
-    /**
-     * Whether to attempt automatic CAPTCHA solving.
-     */
-    solve_captchas?: boolean | null;
-  }
-
-  export type LamExtractParamsNonStreaming = LamAPI.LamExtractParamsNonStreaming;
-  export type LamExtractParamsStreaming = LamAPI.LamExtractParamsStreaming;
-}
-
-export interface LamExtractParamsNonStreaming extends LamExtractParamsBase {
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream?: false | null;
-}
-
-export interface LamExtractParamsStreaming extends LamExtractParamsBase {
-  /**
-   * Whether the response should be streamed back or not.
-   */
-  stream: true;
+  task_status: 'STARTING' | 'PROCESSING' | 'DONE' | 'HUMAN_INTERACTION' | 'FAILURE';
 }
 
 export type LamIntegrationRunParams = LamIntegrationRunParamsNonStreaming | LamIntegrationRunParamsStreaming;
@@ -320,14 +188,51 @@ export namespace LamIntegrationRunParams {
     block_ads?: boolean | null;
 
     /**
-     * Whether to use a proxy for the browser session.
+     * list of extension ids
      */
-    proxy?: boolean | null;
+    extension_ids?: Array<unknown> | null;
+
+    /**
+     * Proxy details for the browser session.
+     */
+    proxy?: Advanced.Proxy | null;
 
     /**
      * Whether to attempt automatic CAPTCHA solving.
      */
     solve_captchas?: boolean | null;
+  }
+
+  export namespace Advanced {
+    /**
+     * Proxy details for the browser session.
+     */
+    export interface Proxy {
+      /**
+       * Target city.
+       */
+      city?: string | null;
+
+      /**
+       * Target country (2-letter ISO code).
+       */
+      country?: string | null;
+
+      /**
+       * Whether to use a proxy for the browser session.
+       */
+      enable?: boolean;
+
+      /**
+       * Target state (2-letter code).
+       */
+      state?: string | null;
+
+      /**
+       * Target postal code.
+       */
+      zip?: number | null;
+    }
   }
 
   export type LamIntegrationRunParamsNonStreaming = LamAPI.LamIntegrationRunParamsNonStreaming;
@@ -380,6 +285,22 @@ export interface LamRunParamsBase {
   chat_history?: Array<unknown> | null;
 
   /**
+   * The maximum number of results to extract.
+   */
+  max_count?: number | null;
+
+  /**
+   * Mode of execution.
+   */
+  mode?: 'deepsearch' | 'default' | null;
+
+  /**
+   * The expected schema for the response. This is a dictionary where the keys
+   * describe the fields and the values describe their purposes.
+   */
+  schema?: unknown;
+
+  /**
    * Whether the response should be streamed back or not.
    */
   stream?: boolean | null;
@@ -397,14 +318,51 @@ export namespace LamRunParams {
     block_ads?: boolean | null;
 
     /**
-     * Whether to use a proxy for the browser session.
+     * list of extension ids
      */
-    proxy?: boolean | null;
+    extension_ids?: Array<unknown> | null;
+
+    /**
+     * Proxy details for the browser session.
+     */
+    proxy?: Advanced.Proxy | null;
 
     /**
      * Whether to attempt automatic CAPTCHA solving.
      */
     solve_captchas?: boolean | null;
+  }
+
+  export namespace Advanced {
+    /**
+     * Proxy details for the browser session.
+     */
+    export interface Proxy {
+      /**
+       * Target city.
+       */
+      city?: string | null;
+
+      /**
+       * Target country (2-letter ISO code).
+       */
+      country?: string | null;
+
+      /**
+       * Whether to use a proxy for the browser session.
+       */
+      enable?: boolean;
+
+      /**
+       * Target state (2-letter code).
+       */
+      state?: string | null;
+
+      /**
+       * Target postal code.
+       */
+      zip?: number | null;
+    }
   }
 
   export type LamRunParamsNonStreaming = LamAPI.LamRunParamsNonStreaming;
@@ -427,12 +385,8 @@ export interface LamRunParamsStreaming extends LamRunParamsBase {
 
 export declare namespace Lam {
   export {
-    type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
     type LamRunResponse as LamRunResponse,
-    type LamExtractParams as LamExtractParams,
-    type LamExtractParamsNonStreaming as LamExtractParamsNonStreaming,
-    type LamExtractParamsStreaming as LamExtractParamsStreaming,
     type LamIntegrationRunParams as LamIntegrationRunParams,
     type LamIntegrationRunParamsNonStreaming as LamIntegrationRunParamsNonStreaming,
     type LamIntegrationRunParamsStreaming as LamIntegrationRunParamsStreaming,

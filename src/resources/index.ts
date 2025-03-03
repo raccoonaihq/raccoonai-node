@@ -10,12 +10,8 @@ export {
 } from './fleet';
 export {
   Lam,
-  type LamExtractResponse,
   type LamIntegrationRunResponse,
   type LamRunResponse,
-  type LamExtractParams,
-  type LamExtractParamsNonStreaming,
-  type LamExtractParamsStreaming,
   type LamIntegrationRunParams,
   type LamIntegrationRunParamsNonStreaming,
   type LamIntegrationRunParamsStreaming,

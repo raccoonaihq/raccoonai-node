@@ -29,11 +29,11 @@ const client = new RaccoonAI({
 
 async function main() {
   const response = await client.lam.run({
-    query: 'Find the price of iphone 16 on Amazon.',
+    query: 'Find YCombinator startups who got funded in W24.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   });
 
-  console.log(response.livestream_url);
+  console.log(response.data);
 }
 
 main();
@@ -49,12 +49,12 @@ import RaccoonAI from 'raccoonai';
 const client = new RaccoonAI();
 
 const stream = await client.lam.run({
-  query: 'Find the price of iphone 16 on Amazon.',
+  query: 'Find YCombinator startups who got funded in W24.',
   raccoon_passcode: '<end-user-raccoon-passcode>',
   stream: true,
 });
 for await (const lamRunResponse of stream) {
-  console.log(lamRunResponse.livestream_url);
+  console.log(lamRunResponse.data);
 }
 ```
 
@@ -76,7 +76,7 @@ const client = new RaccoonAI({
 
 async function main() {
   const params: RaccoonAI.LamRunParams = {
-    query: 'Find the price of iphone 16 on Amazon.',
+    query: 'Find YCombinator startups who got funded in W24.',
     raccoon_passcode: '<end-user-raccoon-passcode>',
   };
   const response: RaccoonAI.LamRunResponse = await client.lam.run(params);
@@ -97,7 +97,10 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const response = await client.lam
-    .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
+    .run({
+      query: 'Find YCombinator startups who got funded in W24.',
+      raccoon_passcode: '<end-user-raccoon-passcode>',
+    })
     .catch(async (err) => {
       if (err instanceof RaccoonAI.APIError) {
         console.log(err.status); // 400
@@ -141,7 +144,7 @@ const client = new RaccoonAI({
 });
 
 // Or, configure per-request:
-await client.lam.run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
+await client.lam.run({ query: 'Find YCombinator startups who got funded in W24.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
   maxRetries: 5,
 });
 ```
@@ -158,7 +161,7 @@ const client = new RaccoonAI({
 });
 
 // Override per-request:
-await client.lam.run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
+await client.lam.run({ query: 'Find YCombinator startups who got funded in W24.', raccoon_passcode: '<end-user-raccoon-passcode>' }, {
   timeout: 5 * 1000,
 });
 ```
@@ -180,16 +183,22 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 const client = new RaccoonAI();
 
 const response = await client.lam
-  .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
+  .run({
+    query: 'Find YCombinator startups who got funded in W24.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  })
   .asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
 const { data: response, response: raw } = await client.lam
-  .run({ query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' })
+  .run({
+    query: 'Find YCombinator startups who got funded in W24.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  })
   .withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(response.livestream_url);
+console.log(response.data);
 ```
 
 ### Making custom/undocumented requests
@@ -294,7 +303,10 @@ const client = new RaccoonAI({
 
 // Override per-request:
 await client.lam.run(
-  { query: 'Find the price of iphone 16 on Amazon.', raccoon_passcode: '<end-user-raccoon-passcode>' },
+  {
+    query: 'Find YCombinator startups who got funded in W24.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  },
   {
     httpAgent: new http.Agent({ keepAlive: false }),
   },

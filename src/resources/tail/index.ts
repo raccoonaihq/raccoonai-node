@@ -2,4 +2,4 @@
 
 export { Apps, type AppAllResponse, type AppLinkedResponse, type AppLinkedParams } from './apps';
 export { Auth, type AuthStatusResponse, type AuthStatusParams } from './auth';
-export { Tail } from './tail';
+export { Tail, type TailUsersResponse, type TailUsersParams } from './tail';

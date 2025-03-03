@@ -33,7 +33,7 @@ import {
   LamTasksParams,
   LamTasksResponse,
 } from './resources/lam';
-import { Tail } from './resources/tail/tail';
+import { Tail, TailUsersParams, TailUsersResponse } from './resources/tail/tail';
 
 const environments = {
   production: 'https://api.flyingraccoon.tech',
@@ -235,7 +235,11 @@ export declare namespace RaccoonAI {
     type LamTasksParams as LamTasksParams,
   };
 
-  export { Tail as Tail };
+  export {
+    Tail as Tail,
+    type TailUsersResponse as TailUsersResponse,
+    type TailUsersParams as TailUsersParams,
+  };
 
   export {
     Fleet as Fleet,

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-03-03)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Bug Fixes
+
+* **api:** tail users get path ([#16](https://github.com/raccoonaihq/raccoonai-node/issues/16)) ([3a2ba4e](https://github.com/raccoonaihq/raccoonai-node/commit/3a2ba4ed05dbd24a7fd557ef1e316be4b8249e47))
+
 ## 0.1.0-alpha.5 (2025-03-03)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)

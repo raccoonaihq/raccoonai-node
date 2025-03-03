@@ -12,6 +12,14 @@ Methods:
 
 # Tail
 
+Types:
+
+- <code><a href="./src/resources/tail/tail.ts">TailUsersResponse</a></code>
+
+Methods:
+
+- <code title="get /tail/users">client.tail.<a href="./src/resources/tail/tail.ts">users</a>({ ...params }) -> TailUsersResponse</code>
+
 ## Apps
 
 Types:

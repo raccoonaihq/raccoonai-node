@@ -27,4 +27,4 @@ export {
   type LamRunParamsStreaming,
   type LamTasksParams,
 } from './lam';
-export { Tail } from './tail/tail';
+export { Tail, type TailUsersResponse, type TailUsersParams } from './tail/tail';

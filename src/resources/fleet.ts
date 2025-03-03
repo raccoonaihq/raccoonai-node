@@ -45,10 +45,9 @@ export interface FleetCreateResponse {
   session_id: string;
 
   /**
-   * The current status of the session. Possible values include 'running', 'unknown',
-   * or 'terminated'.
+   * The current status of the session.
    */
-  status: string;
+  status: 'starting' | 'running' | 'terminated' | 'completed' | 'unknown';
 
   /**
    * The WebSocket URL for interacting with the session.
@@ -75,10 +74,9 @@ export interface FleetStatusResponse {
   session_id: string;
 
   /**
-   * The current status of the session. Possible values include 'running', 'unknown',
-   * or 'terminated'.
+   * The current status of the session.
    */
-  status: string;
+  status: 'starting' | 'running' | 'terminated' | 'completed' | 'unknown';
 }
 
 export interface FleetTerminateResponse {
@@ -88,10 +86,9 @@ export interface FleetTerminateResponse {
   session_id: string;
 
   /**
-   * The current status of the session. Possible values include 'running', 'unknown',
-   * or 'terminated'.
+   * The current status of the session.
    */
-  status: string;
+  status: 'starting' | 'running' | 'terminated' | 'completed' | 'unknown';
 }
 
 export interface FleetCreateParams {
@@ -102,16 +99,10 @@ export interface FleetCreateParams {
   advanced?: FleetCreateParams.Advanced | null;
 
   /**
-   * The name of the app for which the session is going to run for, used for
-   * streamlining authentication.
-   */
-  app_name?: string | null;
-
-  /**
    * The type of browser to use. Supported values include 'chromium', 'firefox', and
    * 'webkit'.
    */
-  browser_type?: string | null;
+  browser_type?: 'chromium' | 'firefox' | 'webkit' | null;
 
   /**
    * Whether to run the browser in headless mode.
@@ -153,14 +144,51 @@ export namespace FleetCreateParams {
     block_ads?: boolean | null;
 
     /**
-     * Whether to use a proxy for the browser session.
+     * list of extension ids
      */
-    proxy?: boolean | null;
+    extension_ids?: Array<unknown> | null;
+
+    /**
+     * Proxy details for the browser session.
+     */
+    proxy?: Advanced.Proxy | null;
 
     /**
      * Whether to attempt automatic CAPTCHA solving.
      */
     solve_captchas?: boolean | null;
+  }
+
+  export namespace Advanced {
+    /**
+     * Proxy details for the browser session.
+     */
+    export interface Proxy {
+      /**
+       * Target city.
+       */
+      city?: string | null;
+
+      /**
+       * Target country (2-letter ISO code).
+       */
+      country?: string | null;
+
+      /**
+       * Whether to use a proxy for the browser session.
+       */
+      enable?: boolean;
+
+      /**
+       * Target state (2-letter code).
+       */
+      state?: string | null;
+
+      /**
+       * Target postal code.
+       */
+      zip?: number | null;
+    }
   }
 
   /**

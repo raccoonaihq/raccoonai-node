@@ -15,10 +15,6 @@ import {
 } from './resources/fleet';
 import {
   Lam,
-  LamExtractParams,
-  LamExtractParamsNonStreaming,
-  LamExtractParamsStreaming,
-  LamExtractResponse,
   LamIntegrationRunParams,
   LamIntegrationRunParamsNonStreaming,
   LamIntegrationRunParamsStreaming,
@@ -213,12 +209,8 @@ export declare namespace RaccoonAI {
 
   export {
     Lam as Lam,
-    type LamExtractResponse as LamExtractResponse,
     type LamIntegrationRunResponse as LamIntegrationRunResponse,
     type LamRunResponse as LamRunResponse,
-    type LamExtractParams as LamExtractParams,
-    type LamExtractParamsNonStreaming as LamExtractParamsNonStreaming,
-    type LamExtractParamsStreaming as LamExtractParamsStreaming,
     type LamIntegrationRunParams as LamIntegrationRunParams,
     type LamIntegrationRunParamsNonStreaming as LamIntegrationRunParamsNonStreaming,
     type LamIntegrationRunParamsStreaming as LamIntegrationRunParamsStreaming,

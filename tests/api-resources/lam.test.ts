@@ -9,32 +9,6 @@ const client = new RaccoonAI({
 });
 
 describe('resource lam', () => {
-  test('integrationRun: only required params', async () => {
-    const responsePromise = client.lam.integrationRun('app_name', { raccoon_passcode: 'raccoon_passcode' });
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('integrationRun: required and optional params', async () => {
-    const response = await client.lam.integrationRun('app_name', {
-      raccoon_passcode: 'raccoon_passcode',
-      advanced: {
-        block_ads: true,
-        extension_ids: ['df2399ea-a938-438f-9d4b-ef3bc95cf8af'],
-        proxy: { city: 'sanfrancisco', country: 'us', enable: true, state: 'ca', zip: 94102 },
-        solve_captchas: true,
-      },
-      integration_id: 'integration_id',
-      properties: {},
-      stream: false,
-    });
-  });
-
   test('run: only required params', async () => {
     const responsePromise = client.lam.run({
       query: 'Find YCombinator startups who got funded in W24.',
@@ -73,5 +47,43 @@ describe('resource lam', () => {
       },
       stream: false,
     });
+  });
+
+  test('tasks', async () => {
+    const responsePromise = client.lam.tasks();
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('tasks: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(client.lam.tasks({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+      RaccoonAI.NotFoundError,
+    );
+  });
+
+  test('tasks: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.lam.tasks(
+        {
+          end_time: 1678972800000,
+          executionType: ['run', 'extract'],
+          limit: 20,
+          page: 1,
+          raccoon_passcode: 'code123',
+          sort_by: 'timestamp',
+          sort_order: 'ascend',
+          start_time: 1678886400000,
+          task_id: 'task_123',
+        },
+        { path: '/_stainless_unknown_path' },
+      ),
+    ).rejects.toThrow(RaccoonAI.NotFoundError);
   });
 });

@@ -48,42 +48,4 @@ describe('resource lam', () => {
       stream: false,
     });
   });
-
-  test('tasks', async () => {
-    const responsePromise = client.lam.tasks();
-    const rawResponse = await responsePromise.asResponse();
-    expect(rawResponse).toBeInstanceOf(Response);
-    const response = await responsePromise;
-    expect(response).not.toBeInstanceOf(Response);
-    const dataAndResponse = await responsePromise.withResponse();
-    expect(dataAndResponse.data).toBe(response);
-    expect(dataAndResponse.response).toBe(rawResponse);
-  });
-
-  test('tasks: request options instead of params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.lam.tasks({ path: '/_stainless_unknown_path' })).rejects.toThrow(
-      RaccoonAI.NotFoundError,
-    );
-  });
-
-  test('tasks: request options and params are passed correctly', async () => {
-    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(
-      client.lam.tasks(
-        {
-          end_time: 1678972800000,
-          executionType: ['run', 'extract'],
-          limit: 20,
-          page: 1,
-          raccoon_passcode: 'code123',
-          sort_by: 'timestamp',
-          sort_order: 'ascend',
-          start_time: 1678886400000,
-          task_id: 'task_123',
-        },
-        { path: '/_stainless_unknown_path' },
-      ),
-    ).rejects.toThrow(RaccoonAI.NotFoundError);
-  });
 });

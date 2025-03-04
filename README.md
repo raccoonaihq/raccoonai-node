@@ -104,17 +104,17 @@ import RaccoonAI, { toFile } from 'raccoonai';
 const client = new RaccoonAI();
 
 // If you have access to Node `fs` we recommend using `fs.createReadStream()`:
-await client.extensions.upload({ file: fs.createReadStream('/path/to/file') });
+await client.fleet.extensions.upload({ file: fs.createReadStream('/path/to/file') });
 
 // Or if you have the web `File` API you can pass a `File` instance:
-await client.extensions.upload({ file: new File(['my bytes'], 'file') });
+await client.fleet.extensions.upload({ file: new File(['my bytes'], 'file') });
 
 // You can also pass a `fetch` `Response`:
-await client.extensions.upload({ file: await fetch('https://somesite/file') });
+await client.fleet.extensions.upload({ file: await fetch('https://somesite/file') });
 
 // Finally, if none of the above are convenient, you can use our `toFile` helper:
-await client.extensions.upload({ file: await toFile(Buffer.from('my bytes'), 'file') });
-await client.extensions.upload({ file: await toFile(new Uint8Array([0, 1, 2]), 'file') });
+await client.fleet.extensions.upload({ file: await toFile(Buffer.from('my bytes'), 'file') });
+await client.fleet.extensions.upload({ file: await toFile(new Uint8Array([0, 1, 2]), 'file') });
 ```
 
 ## Handling errors

@@ -1,58 +1,62 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../resource';
-import { isRequestOptions } from '../core';
-import * as Core from '../core';
+import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
+import * as Core from '../../core';
 
-export class Fleet extends APIResource {
+export class Sessions extends APIResource {
   /**
    * Fleet Websocket Session Create Endpoint
    */
-  create(body: FleetCreateParams, options?: Core.RequestOptions): Core.APIPromise<FleetCreateResponse> {
+  create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse> {
     return this._client.post('/sessions/create', { body, ...options });
-  }
-
-  /**
-   * Fleet Session Logs Endpoint
-   */
-  logs(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<FleetLogsResponse> {
-    return this._client.get(`/sessions/${sessionId}/logs`, options);
   }
 
   /**
    * Get Sessions Endpoint
    */
-  sessions(
-    query?: FleetSessionsParams,
+  all(query?: SessionAllParams, options?: Core.RequestOptions): Core.APIPromise<SessionAllResponse>;
+  all(options?: Core.RequestOptions): Core.APIPromise<SessionAllResponse>;
+  all(
+    query: SessionAllParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<FleetSessionsResponse>;
-  sessions(options?: Core.RequestOptions): Core.APIPromise<FleetSessionsResponse>;
-  sessions(
-    query: FleetSessionsParams | Core.RequestOptions = {},
-    options?: Core.RequestOptions,
-  ): Core.APIPromise<FleetSessionsResponse> {
+  ): Core.APIPromise<SessionAllResponse> {
     if (isRequestOptions(query)) {
-      return this.sessions({}, query);
+      return this.all({}, query);
     }
     return this._client.get('/sessions', { query, ...options });
   }
 
   /**
+   * Fleet Session Logs Endpoint
+   */
+  logs(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionLogsResponse> {
+    return this._client.get(`/sessions/${sessionId}/logs`, options);
+  }
+
+  /**
+   * Get Session Media Endpoint
+   */
+  media(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionMediaResponse> {
+    return this._client.get(`/sessions/${sessionId}/media`, options);
+  }
+
+  /**
    * Fleet Session Status Endpoint
    */
-  status(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<FleetStatusResponse> {
+  status(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionStatusResponse> {
     return this._client.get(`/sessions/${sessionId}/status`, options);
   }
 
   /**
    * Fleet Session Terminate Endpoint
    */
-  terminate(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<FleetTerminateResponse> {
+  terminate(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionTerminateResponse> {
     return this._client.delete(`/sessions/${sessionId}/terminate`, options);
   }
 }
 
-export interface FleetCreateResponse {
+export interface SessionCreateResponse {
   /**
    * The Livestream URL
    */
@@ -74,31 +78,19 @@ export interface FleetCreateResponse {
   websocket_url: string;
 }
 
-export interface FleetLogsResponse {
-  /**
-   * A unique identifier for the session.
-   */
-  session_id: string;
-
-  /**
-   * A dictionary containing the browser console logs for the session.
-   */
-  session_logs: unknown;
-}
-
-export interface FleetSessionsResponse {
+export interface SessionAllResponse {
   /**
    * Metadata about the session list.
    */
-  meta: FleetSessionsResponse.Meta;
+  meta: SessionAllResponse.Meta;
 
   /**
    * List of sessions.
    */
-  sessions: Array<FleetSessionsResponse.Session>;
+  sessions: Array<SessionAllResponse.Session>;
 }
 
-export namespace FleetSessionsResponse {
+export namespace SessionAllResponse {
   /**
    * Metadata about the session list.
    */
@@ -167,7 +159,72 @@ export namespace FleetSessionsResponse {
   }
 }
 
-export interface FleetStatusResponse {
+export interface SessionLogsResponse {
+  /**
+   * A unique identifier for the session.
+   */
+  session_id: string;
+
+  /**
+   * A dictionary containing the browser console logs for the session.
+   */
+  session_logs: unknown;
+}
+
+export interface SessionMediaResponse {
+  /**
+   * A list of actions performed, not applicable to fleet sessions.
+   */
+  actions: Array<SessionMediaResponse.Action>;
+
+  /**
+   * A list of recordings associated.
+   */
+  recordings: Array<SessionMediaResponse.Recording>;
+
+  /**
+   * A unique identifier for the session.
+   */
+  sessionId: string;
+}
+
+export namespace SessionMediaResponse {
+  export interface Action {
+    /**
+     * The type of action performed, e.g., 'click'.
+     */
+    action: string;
+
+    /**
+     * The sequential index of the action.
+     */
+    index: number;
+
+    /**
+     * URL of the screenshot taken at the time of the action.
+     */
+    screenshot: string;
+  }
+
+  export interface Recording {
+    /**
+     * The title of the webpage where the recording took place.
+     */
+    pageTitle: string;
+
+    /**
+     * The URL of the webpage where the recording took place.
+     */
+    pageUrl: string;
+
+    /**
+     * URL of the recording file.
+     */
+    url: string;
+  }
+}
+
+export interface SessionStatusResponse {
   /**
    * A unique identifier for the session.
    */
@@ -179,7 +236,7 @@ export interface FleetStatusResponse {
   status: 'starting' | 'running' | 'terminated' | 'completed' | 'unknown';
 }
 
-export interface FleetTerminateResponse {
+export interface SessionTerminateResponse {
   /**
    * A unique identifier for the session.
    */
@@ -191,12 +248,12 @@ export interface FleetTerminateResponse {
   status: 'starting' | 'running' | 'terminated' | 'completed' | 'unknown';
 }
 
-export interface FleetCreateParams {
+export interface SessionCreateParams {
   /**
    * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
    */
-  advanced?: FleetCreateParams.Advanced | null;
+  advanced?: SessionCreateParams.Advanced | null;
 
   /**
    * The type of browser to use. Supported values include 'chromium', 'firefox', and
@@ -224,7 +281,7 @@ export interface FleetCreateParams {
    * Configuration settings for the browser, such as viewport size and User-Agent
    * string.
    */
-  settings?: FleetCreateParams.Settings | null;
+  settings?: SessionCreateParams.Settings | null;
 
   /**
    * The entrypoint url for the session.
@@ -232,7 +289,7 @@ export interface FleetCreateParams {
   url?: string | null;
 }
 
-export namespace FleetCreateParams {
+export namespace SessionCreateParams {
   /**
    * Advanced configuration options for the session, such as ad-blocking and CAPTCHA
    * solving.
@@ -315,7 +372,7 @@ export namespace FleetCreateParams {
   }
 }
 
-export interface FleetSessionsParams {
+export interface SessionAllParams {
   /**
    * Filter sessions created before this Unix timestamp (in milliseconds).
    */
@@ -367,14 +424,15 @@ export interface FleetSessionsParams {
   task_id?: string | null;
 }
 
-export declare namespace Fleet {
+export declare namespace Sessions {
   export {
-    type FleetCreateResponse as FleetCreateResponse,
-    type FleetLogsResponse as FleetLogsResponse,
-    type FleetSessionsResponse as FleetSessionsResponse,
-    type FleetStatusResponse as FleetStatusResponse,
-    type FleetTerminateResponse as FleetTerminateResponse,
-    type FleetCreateParams as FleetCreateParams,
-    type FleetSessionsParams as FleetSessionsParams,
+    type SessionCreateResponse as SessionCreateResponse,
+    type SessionAllResponse as SessionAllResponse,
+    type SessionLogsResponse as SessionLogsResponse,
+    type SessionMediaResponse as SessionMediaResponse,
+    type SessionStatusResponse as SessionStatusResponse,
+    type SessionTerminateResponse as SessionTerminateResponse,
+    type SessionCreateParams as SessionCreateParams,
+    type SessionAllParams as SessionAllParams,
   };
 }

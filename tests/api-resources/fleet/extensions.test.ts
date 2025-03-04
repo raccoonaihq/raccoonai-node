@@ -10,7 +10,7 @@ const client = new RaccoonAI({
 
 describe('resource extensions', () => {
   test('delete', async () => {
-    const responsePromise = client.extensions.delete('extensionId');
+    const responsePromise = client.fleet.extensions.delete('extensionId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -23,12 +23,12 @@ describe('resource extensions', () => {
   test('delete: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
-      client.extensions.delete('extensionId', { path: '/_stainless_unknown_path' }),
+      client.fleet.extensions.delete('extensionId', { path: '/_stainless_unknown_path' }),
     ).rejects.toThrow(RaccoonAI.NotFoundError);
   });
 
   test('all', async () => {
-    const responsePromise = client.extensions.all();
+    const responsePromise = client.fleet.extensions.all();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -40,13 +40,13 @@ describe('resource extensions', () => {
 
   test('all: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.extensions.all({ path: '/_stainless_unknown_path' })).rejects.toThrow(
+    await expect(client.fleet.extensions.all({ path: '/_stainless_unknown_path' })).rejects.toThrow(
       RaccoonAI.NotFoundError,
     );
   });
 
   test('get', async () => {
-    const responsePromise = client.extensions.get('extensionId');
+    const responsePromise = client.fleet.extensions.get('extensionId');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -58,13 +58,13 @@ describe('resource extensions', () => {
 
   test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
-    await expect(client.extensions.get('extensionId', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      RaccoonAI.NotFoundError,
-    );
+    await expect(
+      client.fleet.extensions.get('extensionId', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(RaccoonAI.NotFoundError);
   });
 
   test('upload: only required params', async () => {
-    const responsePromise = client.extensions.upload({
+    const responsePromise = client.fleet.extensions.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
     const rawResponse = await responsePromise.asResponse();
@@ -77,7 +77,7 @@ describe('resource extensions', () => {
   });
 
   test('upload: required and optional params', async () => {
-    const response = await client.extensions.upload({
+    const response = await client.fleet.extensions.upload({
       file: await toFile(Buffer.from('# my file contents'), 'README.md'),
     });
   });

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-03-04)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** add create user and media endpoints + restructure ([#19](https://github.com/raccoonaihq/raccoonai-node/issues/19)) ([ef359dd](https://github.com/raccoonaihq/raccoonai-node/commit/ef359ddcb6ce67ee5d0093ce27059c990c5581f9))
+
 ## 0.1.0-alpha.6 (2025-03-03)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)

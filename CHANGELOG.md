@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-03-11)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#22](https://github.com/raccoonaihq/raccoonai-node/issues/22)) ([134af62](https://github.com/raccoonaihq/raccoonai-node/commit/134af621ff304a72a586c2ecf4c91ea6095e796e))
+* **client:** accept RFC6838 JSON content types ([#24](https://github.com/raccoonaihq/raccoonai-node/issues/24)) ([8d21abc](https://github.com/raccoonaihq/raccoonai-node/commit/8d21abc3b8da9f483a7739304b02d06f625577da))
+
 ## 0.1.0-alpha.7 (2025-03-04)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)

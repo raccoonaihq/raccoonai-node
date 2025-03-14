@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-03-14)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Bug Fixes
+
+* **exports:** ensure resource imports don't require /index ([#28](https://github.com/raccoonaihq/raccoonai-node/issues/28)) ([c8897a0](https://github.com/raccoonaihq/raccoonai-node/commit/c8897a0fef13355d967de57160399190daa3eb5f))
+
+
+### Chores
+
+* **internal:** remove extra empty newlines ([#26](https://github.com/raccoonaihq/raccoonai-node/issues/26)) ([9ab43c0](https://github.com/raccoonaihq/raccoonai-node/commit/9ab43c01f1ad81433b5aa84c2b928c10ab32c5bd))
+
 ## 0.1.0-alpha.8 (2025-03-11)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)

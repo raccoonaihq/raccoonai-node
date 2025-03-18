@@ -17,8 +17,8 @@ import {
 import { Tail } from './resources/tail/tail';
 
 const environments = {
-  production: 'https://api.flyingraccoon.tech',
-  staging: 'https://staging.flyingraccoon.tech',
+  production: 'https://api.raccoonai.tech',
+  staging: 'https://staging.raccoonai.tech',
   local: 'http://localhost:3800',
 };
 type Environment = keyof typeof environments;
@@ -33,8 +33,8 @@ export interface ClientOptions {
    * Specifies the environment to use for the API.
    *
    * Each environment maps to a different base URL:
-   * - `production` corresponds to `https://api.flyingraccoon.tech`
-   * - `staging` corresponds to `https://staging.flyingraccoon.tech`
+   * - `production` corresponds to `https://api.raccoonai.tech`
+   * - `staging` corresponds to `https://staging.raccoonai.tech`
    * - `local` corresponds to `http://localhost:3800`
    */
   environment?: Environment | undefined;
@@ -109,7 +109,7 @@ export class RaccoonAI extends Core.APIClient {
    *
    * @param {string | undefined} [opts.secretKey=process.env['RACCOON_SECRET_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['RACCOON_AI_BASE_URL'] ?? https://api.flyingraccoon.tech] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['RACCOON_AI_BASE_URL'] ?? https://api.raccoonai.tech] - Override the default base URL for the API.
    * @param {number} [opts.timeout=10 minutes] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.

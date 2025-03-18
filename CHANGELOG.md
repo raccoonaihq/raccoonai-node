@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-03-18)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Features
+
+* **api:** update new domain ([#33](https://github.com/raccoonaihq/raccoonai-node/issues/33)) ([4d29359](https://github.com/raccoonaihq/raccoonai-node/commit/4d29359a1fcfdb52affccba84f48518fe9a335d8))
+
 ## 0.1.0-alpha.10 (2025-03-18)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)

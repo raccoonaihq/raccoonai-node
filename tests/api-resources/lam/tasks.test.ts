@@ -33,7 +33,7 @@ describe('resource tasks', () => {
       client.lam.tasks.all(
         {
           end_time: 1678972800000,
-          executionType: ['run', 'extract'],
+          executionType: ['default', 'deepsearch'],
           limit: 20,
           page: 1,
           raccoon_passcode: 'code123',

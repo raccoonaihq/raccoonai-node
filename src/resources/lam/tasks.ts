@@ -68,9 +68,9 @@ export namespace TaskAllResponse {
     executionTime: number;
 
     /**
-     * The type of execution performed (e.g., 'run', 'extract').
+     * The type of execution performed (e.g., 'default', 'deepsearch').
      */
-    executionType: 'run' | 'extract';
+    executionType: 'default' | 'deepsearch';
 
     /**
      * Input parameters used for the task execution.
@@ -173,9 +173,9 @@ export interface TaskAllParams {
   end_time?: number | null;
 
   /**
-   * Filter tasks by execution type (e.g., 'run', 'extract').
+   * Filter tasks by execution type (e.g., 'default', 'deepsearch').
    */
-  executionType?: Array<'run' | 'extract' | 'fleet'> | null;
+  executionType?: Array<'default' | 'deepsearch' | 'fleet'> | null;
 
   /**
    * Number of tasks per page (maximum 100).

@@ -44,7 +44,7 @@ describe('resource sessions', () => {
       client.fleet.sessions.all(
         {
           end_time: 1678972800000,
-          executionType: ['run'],
+          executionType: ['default'],
           limit: 15,
           page: 2,
           raccoon_passcode: 'code456',

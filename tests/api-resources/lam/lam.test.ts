@@ -30,7 +30,7 @@ describe('resource lam', () => {
       advanced: {
         block_ads: true,
         extension_ids: ['df2399ea-a938-438f-9d4b-ef3bc95cf8af'],
-        proxy: { city: 'sanfrancisco', country: 'us', enable: true, state: 'ca', zip: 94102 },
+        proxy: { city: 'sanfrancisco', country: 'us', state: 'ca', zip: 94102 },
         solve_captchas: true,
       },
       app_url: 'https://www.ycombinator.com/companies',

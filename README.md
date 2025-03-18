@@ -4,7 +4,7 @@
 
 This library provides convenient access to the Raccoon AI REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.flyingraccoon.tech](https://docs.flyingraccoon.tech). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.raccoonai.tech](https://docs.raccoonai.tech). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
 

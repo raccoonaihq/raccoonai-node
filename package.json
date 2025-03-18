@@ -2,7 +2,7 @@
   "name": "raccoonai",
   "version": "0.1.0-alpha.10",
   "description": "The official TypeScript library for the Raccoon AI API",
-  "author": "Raccoon AI <team@flyingraccoon.tech>",
+  "author": "Raccoon AI <team@raccoonai.tech>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",

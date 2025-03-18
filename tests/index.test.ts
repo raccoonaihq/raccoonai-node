@@ -183,13 +183,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['RACCOON_AI_BASE_URL'] = ''; // empty
       const client = new RaccoonAI({ secretKey: 'My Secret Key' });
-      expect(client.baseURL).toEqual('https://api.flyingraccoon.tech');
+      expect(client.baseURL).toEqual('https://api.raccoonai.tech');
     });
 
     test('blank env variable', () => {
       process.env['RACCOON_AI_BASE_URL'] = '  '; // blank
       const client = new RaccoonAI({ secretKey: 'My Secret Key' });
-      expect(client.baseURL).toEqual('https://api.flyingraccoon.tech');
+      expect(client.baseURL).toEqual('https://api.raccoonai.tech');
     });
 
     test('env variable with environment', () => {
@@ -202,7 +202,7 @@ describe('instantiate client', () => {
       );
 
       const client = new RaccoonAI({ secretKey: 'My Secret Key', baseURL: null, environment: 'production' });
-      expect(client.baseURL).toEqual('https://api.flyingraccoon.tech');
+      expect(client.baseURL).toEqual('https://api.raccoonai.tech');
     });
   });
 

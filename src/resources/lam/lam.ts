@@ -129,9 +129,10 @@ export namespace LamRunParams {
     extension_ids?: Array<unknown> | null;
 
     /**
-     * Proxy details for the browser session.
+     * Proxy details for the browser session. Automatically defaults to True if
+     * solve_captchas is on.
      */
-    proxy?: Advanced.Proxy | null;
+    proxy?: Advanced.ProxySettings | boolean;
 
     /**
      * Whether to attempt automatic CAPTCHA solving.
@@ -140,10 +141,7 @@ export namespace LamRunParams {
   }
 
   export namespace Advanced {
-    /**
-     * Proxy details for the browser session.
-     */
-    export interface Proxy {
+    export interface ProxySettings {
       /**
        * Target city.
        */
@@ -153,11 +151,6 @@ export namespace LamRunParams {
        * Target country (2-letter ISO code).
        */
       country?: string | null;
-
-      /**
-       * Whether to use a proxy for the browser session.
-       */
-      enable?: boolean;
 
       /**
        * Target state (2-letter code).

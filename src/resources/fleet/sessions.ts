@@ -70,7 +70,7 @@ export interface SessionCreateResponse {
   /**
    * The current status of the session.
    */
-  status: 'starting' | 'running' | 'terminated' | 'completed' | 'unknown';
+  status: 'starting' | 'running' | 'terminated' | 'completed' | 'unknown' | 'success' | 'failure';
 
   /**
    * The WebSocket URL for interacting with the session.
@@ -118,9 +118,9 @@ export namespace SessionAllResponse {
     executionTime: number;
 
     /**
-     * The type of execution performed (e.g., 'run', 'extract').
+     * The type of execution performed (e.g., 'default', 'deepsearch').
      */
-    executionType: 'run' | 'extract' | 'fleet';
+    executionType: 'default' | 'deepsearch' | 'fleet';
 
     /**
      * Input parameters used for the session.
@@ -306,9 +306,10 @@ export namespace SessionCreateParams {
     extension_ids?: Array<unknown> | null;
 
     /**
-     * Proxy details for the browser session.
+     * Proxy details for the browser session. Automatically defaults to True if
+     * solve_captchas is on.
      */
-    proxy?: Advanced.Proxy | null;
+    proxy?: Advanced.ProxySettings | boolean;
 
     /**
      * Whether to attempt automatic CAPTCHA solving.
@@ -317,10 +318,7 @@ export namespace SessionCreateParams {
   }
 
   export namespace Advanced {
-    /**
-     * Proxy details for the browser session.
-     */
-    export interface Proxy {
+    export interface ProxySettings {
       /**
        * Target city.
        */
@@ -330,11 +328,6 @@ export namespace SessionCreateParams {
        * Target country (2-letter ISO code).
        */
       country?: string | null;
-
-      /**
-       * Whether to use a proxy for the browser session.
-       */
-      enable?: boolean;
 
       /**
        * Target state (2-letter code).
@@ -379,9 +372,9 @@ export interface SessionAllParams {
   end_time?: number | null;
 
   /**
-   * Filter sessions by execution type (e.g., 'run', 'extract').
+   * Filter sessions by execution type (e.g., 'default', 'deepsearch').
    */
-  executionType?: Array<'run' | 'extract' | 'fleet'> | null;
+  executionType?: Array<'default' | 'deepsearch' | 'fleet'> | null;
 
   /**
    * Number of sessions per page (maximum 100).

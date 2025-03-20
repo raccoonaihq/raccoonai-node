@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-03-20)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Chores
+
+* **exports:** cleaner resource index imports ([#36](https://github.com/raccoonaihq/raccoonai-node/issues/36)) ([406f85f](https://github.com/raccoonaihq/raccoonai-node/commit/406f85f63453904c8030bec1a362847ee4676a27))
+* **exports:** stop using path fallbacks ([#38](https://github.com/raccoonaihq/raccoonai-node/issues/38)) ([9393f5d](https://github.com/raccoonaihq/raccoonai-node/commit/9393f5d90f9f804f8a126c182b680cd5e1794546))
+
 ## 0.1.0-alpha.11 (2025-03-18)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)

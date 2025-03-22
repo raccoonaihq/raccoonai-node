@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.13 (2025-03-22)
+
+Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)
+
+### Bug Fixes
+
+* avoid type error in certain environments ([#40](https://github.com/raccoonaihq/raccoonai-node/issues/40)) ([0a93158](https://github.com/raccoonaihq/raccoonai-node/commit/0a93158d50cbc4e3c94fe0e679693bf407625e81))
+
 ## 0.1.0-alpha.12 (2025-03-20)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)

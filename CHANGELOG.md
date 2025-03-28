@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.14 (2025-03-28)
+
+Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)
+
+### Bug Fixes
+
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#43](https://github.com/raccoonaihq/raccoonai-node/issues/43)) ([220ff6f](https://github.com/raccoonaihq/raccoonai-node/commit/220ff6f0c81d3e5cff3d8d7b5c08a0cecd6f7315))
+
 ## 0.1.0-alpha.13 (2025-03-22)
 
 Full Changelog: [v0.1.0-alpha.12...v0.1.0-alpha.13](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.12...v0.1.0-alpha.13)

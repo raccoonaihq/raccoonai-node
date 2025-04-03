@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.15 (2025-04-03)
+
+Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)
+
+### Bug Fixes
+
+* **client:** send `X-Stainless-Timeout` in seconds ([#46](https://github.com/raccoonaihq/raccoonai-node/issues/46)) ([a81529b](https://github.com/raccoonaihq/raccoonai-node/commit/a81529b55bf156d9498e0d26a725b40fde39968c))
+
 ## 0.1.0-alpha.14 (2025-03-28)
 
 Full Changelog: [v0.1.0-alpha.13...v0.1.0-alpha.14](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.13...v0.1.0-alpha.14)

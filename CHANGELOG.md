@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.16 (2025-04-04)
+
+Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#51](https://github.com/raccoonaihq/raccoonai-node/issues/51)) ([30290f6](https://github.com/raccoonaihq/raccoonai-node/commit/30290f68109aa11cc1024911d9da6a0a4047029e))
+
+
+### Chores
+
+* **internal:** add aliases for Record and Array ([#49](https://github.com/raccoonaihq/raccoonai-node/issues/49)) ([8d9c7fe](https://github.com/raccoonaihq/raccoonai-node/commit/8d9c7fede197cdc36f433312178351642634f4e7))
+
 ## 0.1.0-alpha.15 (2025-04-03)
 
 Full Changelog: [v0.1.0-alpha.14...v0.1.0-alpha.15](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.14...v0.1.0-alpha.15)

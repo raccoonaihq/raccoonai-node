@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.17 (2025-04-05)
+
+Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)
+
+### Bug Fixes
+
+* **mcp:** remove unused tools.ts ([#53](https://github.com/raccoonaihq/raccoonai-node/issues/53)) ([86e613b](https://github.com/raccoonaihq/raccoonai-node/commit/86e613b80895bae654451e0ad0306a365965f048))
+
 ## 0.1.0-alpha.16 (2025-04-04)
 
 Full Changelog: [v0.1.0-alpha.15...v0.1.0-alpha.16](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.15...v0.1.0-alpha.16)

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.18 (2025-04-10)
+
+Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)
+
+### Chores
+
+* **internal:** reduce CI branch coverage ([9afb749](https://github.com/raccoonaihq/raccoonai-node/commit/9afb749d96d23ea521155e45c5f8ca7db3f1df23))
+* **internal:** upload builds and expand CI branch coverage ([b129130](https://github.com/raccoonaihq/raccoonai-node/commit/b129130538c7b9b020b3cd4e9664d60f2e74562a))
+
 ## 0.1.0-alpha.17 (2025-04-05)
 
 Full Changelog: [v0.1.0-alpha.16...v0.1.0-alpha.17](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.16...v0.1.0-alpha.17)

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.19 (2025-05-01)
+
+Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)
+
+### Documentation
+
+* **readme:** fix typo ([a129273](https://github.com/raccoonaihq/raccoonai-node/commit/a1292736d566e72f99307dd4da54c1efd953353b))
+
 ## 0.1.0-alpha.18 (2025-04-24)
 
 Full Changelog: [v0.1.0-alpha.17...v0.1.0-alpha.18](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.17...v0.1.0-alpha.18)

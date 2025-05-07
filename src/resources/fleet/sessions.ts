@@ -7,6 +7,11 @@ import * as Core from '../../core';
 export class Sessions extends APIResource {
   /**
    * Fleet Websocket Session Create Endpoint
+   *
+   * @example
+   * ```ts
+   * const session = await client.fleet.sessions.create();
+   * ```
    */
   create(body: SessionCreateParams, options?: Core.RequestOptions): Core.APIPromise<SessionCreateResponse> {
     return this._client.post('/sessions/create', { body, ...options });
@@ -14,6 +19,11 @@ export class Sessions extends APIResource {
 
   /**
    * Get Sessions Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleet.sessions.all();
+   * ```
    */
   all(query?: SessionAllParams, options?: Core.RequestOptions): Core.APIPromise<SessionAllResponse>;
   all(options?: Core.RequestOptions): Core.APIPromise<SessionAllResponse>;
@@ -29,6 +39,13 @@ export class Sessions extends APIResource {
 
   /**
    * Fleet Session Logs Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleet.sessions.logs(
+   *   'session_id',
+   * );
+   * ```
    */
   logs(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionLogsResponse> {
     return this._client.get(`/sessions/${sessionId}/logs`, options);
@@ -36,6 +53,13 @@ export class Sessions extends APIResource {
 
   /**
    * Get Session Media Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleet.sessions.media(
+   *   'sessionId',
+   * );
+   * ```
    */
   media(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionMediaResponse> {
     return this._client.get(`/sessions/${sessionId}/media`, options);
@@ -43,6 +67,13 @@ export class Sessions extends APIResource {
 
   /**
    * Fleet Session Status Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleet.sessions.status(
+   *   'session_id',
+   * );
+   * ```
    */
   status(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionStatusResponse> {
     return this._client.get(`/sessions/${sessionId}/status`, options);
@@ -50,6 +81,13 @@ export class Sessions extends APIResource {
 
   /**
    * Fleet Session Terminate Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleet.sessions.terminate(
+   *   'session_id',
+   * );
+   * ```
    */
   terminate(sessionId: string, options?: Core.RequestOptions): Core.APIPromise<SessionTerminateResponse> {
     return this._client.delete(`/sessions/${sessionId}/terminate`, options);

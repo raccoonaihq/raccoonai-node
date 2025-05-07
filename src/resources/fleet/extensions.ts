@@ -6,6 +6,13 @@ import * as Core from '../../core';
 export class Extensions extends APIResource {
   /**
    * Delete Extension Endpoint
+   *
+   * @example
+   * ```ts
+   * const extension = await client.fleet.extensions.delete(
+   *   'extensionId',
+   * );
+   * ```
    */
   delete(extensionId: string, options?: Core.RequestOptions): Core.APIPromise<unknown> {
     return this._client.delete(`/extensions/${extensionId}`, options);
@@ -13,6 +20,11 @@ export class Extensions extends APIResource {
 
   /**
    * List Extensions Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleet.extensions.all();
+   * ```
    */
   all(options?: Core.RequestOptions): Core.APIPromise<ExtensionAllResponse> {
     return this._client.get('/extensions', options);
@@ -20,6 +32,13 @@ export class Extensions extends APIResource {
 
   /**
    * Get Extension Endpoint
+   *
+   * @example
+   * ```ts
+   * const extension = await client.fleet.extensions.get(
+   *   'extensionId',
+   * );
+   * ```
    */
   get(extensionId: string, options?: Core.RequestOptions): Core.APIPromise<ExtensionGetResponse> {
     return this._client.get(`/extensions/${extensionId}`, options);
@@ -27,6 +46,13 @@ export class Extensions extends APIResource {
 
   /**
    * Upload Extension Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.fleet.extensions.upload({
+   *   file: fs.createReadStream('path/to/file'),
+   * });
+   * ```
    */
   upload(
     body: ExtensionUploadParams,

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.20 (2025-05-07)
+
+Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)
+
+### Chores
+
+* **ci:** bump node version for release workflows ([b7bdf93](https://github.com/raccoonaihq/raccoonai-node/commit/b7bdf93e02ef524cded87006e39bf07fa5b6efb6))
+
+
+### Documentation
+
+* add examples to tsdocs ([0216267](https://github.com/raccoonaihq/raccoonai-node/commit/021626777430bea46d203f4ef7daf807cac75abf))
+
 ## 0.1.0-alpha.19 (2025-05-01)
 
 Full Changelog: [v0.1.0-alpha.18...v0.1.0-alpha.19](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.18...v0.1.0-alpha.19)

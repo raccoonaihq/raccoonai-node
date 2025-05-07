@@ -7,6 +7,11 @@ import * as Core from '../../core';
 export class Tasks extends APIResource {
   /**
    * Get Tasks Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.lam.tasks.all();
+   * ```
    */
   all(query?: TaskAllParams, options?: Core.RequestOptions): Core.APIPromise<TaskAllResponse>;
   all(options?: Core.RequestOptions): Core.APIPromise<TaskAllResponse>;
@@ -22,6 +27,11 @@ export class Tasks extends APIResource {
 
   /**
    * Get Task Media Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.lam.tasks.media('taskId');
+   * ```
    */
   media(taskId: string, options?: Core.RequestOptions): Core.APIPromise<TaskMediaResponse> {
     return this._client.get(`/lam/tasks/${taskId}/media`, options);

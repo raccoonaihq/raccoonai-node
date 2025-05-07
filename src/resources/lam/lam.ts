@@ -13,6 +13,14 @@ export class Lam extends APIResource {
 
   /**
    * Lam Run Endpoint
+   *
+   * @example
+   * ```ts
+   * const response = await client.lam.run({
+   *   query: 'Find YCombinator startups who got funded in W24.',
+   *   raccoon_passcode: '<end-user-raccoon-passcode>',
+   * });
+   * ```
    */
   run(body: LamRunParamsNonStreaming, options?: Core.RequestOptions): APIPromise<LamRunResponse>;
   run(body: LamRunParamsStreaming, options?: Core.RequestOptions): APIPromise<Stream<LamRunResponse>>;

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.21 (2025-05-22)
+
+Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
+
+### Chores
+
+* **docs:** grammar improvements ([4c45709](https://github.com/raccoonaihq/raccoonai-node/commit/4c45709941af0d5164a21068313b98cc898d74a6))
+
 ## 0.1.0-alpha.20 (2025-05-07)
 
 Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)

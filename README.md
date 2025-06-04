@@ -27,16 +27,12 @@ const client = new RaccoonAI({
   environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
 
-async function main() {
-  const response = await client.lam.run({
-    query: 'Find YCombinator startups who got funded in W24.',
-    raccoon_passcode: '<end-user-raccoon-passcode>',
-  });
+const response = await client.lam.run({
+  query: 'Find YCombinator startups who got funded in W24.',
+  raccoon_passcode: '<end-user-raccoon-passcode>',
+});
 
-  console.log(response.data);
-}
-
-main();
+console.log(response.data);
 ```
 
 ## Streaming responses
@@ -74,15 +70,11 @@ const client = new RaccoonAI({
   environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
 
-async function main() {
-  const params: RaccoonAI.LamRunParams = {
-    query: 'Find YCombinator startups who got funded in W24.',
-    raccoon_passcode: '<end-user-raccoon-passcode>',
-  };
-  const response: RaccoonAI.LamRunResponse = await client.lam.run(params);
-}
-
-main();
+const params: RaccoonAI.LamRunParams = {
+  query: 'Find YCombinator startups who got funded in W24.',
+  raccoon_passcode: '<end-user-raccoon-passcode>',
+};
+const response: RaccoonAI.LamRunResponse = await client.lam.run(params);
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -125,24 +117,20 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const response = await client.lam
-    .run({
-      query: 'Find YCombinator startups who got funded in W24.',
-      raccoon_passcode: '<end-user-raccoon-passcode>',
-    })
-    .catch(async (err) => {
-      if (err instanceof RaccoonAI.APIError) {
-        console.log(err.status); // 400
-        console.log(err.name); // BadRequestError
-        console.log(err.headers); // {server: 'nginx', ...}
-      } else {
-        throw err;
-      }
-    });
-}
-
-main();
+const response = await client.lam
+  .run({
+    query: 'Find YCombinator startups who got funded in W24.',
+    raccoon_passcode: '<end-user-raccoon-passcode>',
+  })
+  .catch(async (err) => {
+    if (err instanceof RaccoonAI.APIError) {
+      console.log(err.status); // 400
+      console.log(err.name); // BadRequestError
+      console.log(err.headers); // {server: 'nginx', ...}
+    } else {
+      throw err;
+    }
+  });
 ```
 
 Error codes are as follows:

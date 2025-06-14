@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.21 (2025-06-14)
+
+Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
+
+### Bug Fixes
+
+* publish script — handle NPM errors correctly ([d7befdc](https://github.com/raccoonaihq/raccoonai-node/commit/d7befdc9138d260b8f413f1b40383e2ae37474d5))
+
+
+### Chores
+
+* **docs:** grammar improvements ([4c45709](https://github.com/raccoonaihq/raccoonai-node/commit/4c45709941af0d5164a21068313b98cc898d74a6))
+* **docs:** use top-level-await in example snippets ([6e0a69f](https://github.com/raccoonaihq/raccoonai-node/commit/6e0a69f1510cbfa8b3170fbe75c9113b02eede94))
+* improve publish-npm script --latest tag logic ([0259ec5](https://github.com/raccoonaihq/raccoonai-node/commit/0259ec517d73cf6f9d0bb0ec68e198b20302fdbb))
+* **internal:** make base APIResource abstract ([d2d4dc6](https://github.com/raccoonaihq/raccoonai-node/commit/d2d4dc6405fa55cad08822cb6a205f4cfd71ef87))
+
 ## 0.1.0-alpha.20 (2025-05-07)
 
 Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)

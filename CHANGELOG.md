@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-06-17)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Features
+
+* **client:** add support for endpoint-specific base URLs ([47b1465](https://github.com/raccoonaihq/raccoonai-node/commit/47b14653d060b6711249beedaaf433356fded21e))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([c8d8f13](https://github.com/raccoonaihq/raccoonai-node/commit/c8d8f13c0589f0025da82ae2d141eab3619db6b9))
+
 ## 0.1.0-alpha.21 (2025-06-14)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)

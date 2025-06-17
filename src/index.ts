@@ -143,6 +143,7 @@ export class RaccoonAI extends Core.APIClient {
 
     super({
       baseURL: options.baseURL || environments[options.environment || 'production'],
+      baseURLOverridden: baseURL ? baseURL !== environments[options.environment || 'production'] : false,
       timeout: options.timeout ?? 600000 /* 10 minutes */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -157,6 +158,13 @@ export class RaccoonAI extends Core.APIClient {
   lam: API.Lam = new API.Lam(this);
   tail: API.Tail = new API.Tail(this);
   fleet: API.Fleet = new API.Fleet(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== environments[this._options.environment || 'production'];
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;

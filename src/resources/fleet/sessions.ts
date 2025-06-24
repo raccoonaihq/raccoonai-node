@@ -399,7 +399,7 @@ export namespace SessionCreateParams {
     /**
      * The viewport size (screen dimensions) for the browser in pixels.
      */
-    viewport?: Record<string, number> | null;
+    viewport?: { [key: string]: number } | null;
   }
 }
 

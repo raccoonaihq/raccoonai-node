@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.23 (2025-06-27)
+
+Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
+
+### Bug Fixes
+
+* **ci:** release-doctor — report correct token name ([c3df9b2](https://github.com/raccoonaihq/raccoonai-node/commit/c3df9b2d6b22b78db112acbb98dd1248ed7fbf16))
+
+
+### Refactors
+
+* **types:** replace Record with mapped types ([6c41f6b](https://github.com/raccoonaihq/raccoonai-node/commit/6c41f6bda10169a156ea28576a87d56d8f8ae582))
+
 ## 0.1.0-alpha.22 (2025-06-17)
 
 Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)

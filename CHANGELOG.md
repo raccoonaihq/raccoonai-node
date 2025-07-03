@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-07-03)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Bug Fixes
+
+* **client:** don't send `Content-Type` for bodyless methods ([edd3652](https://github.com/raccoonaihq/raccoonai-node/commit/edd3652b0ea9cf11cdedf6e5b78b84bb93559ac7))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([f913020](https://github.com/raccoonaihq/raccoonai-node/commit/f91302048510cc921cd098a3c9492c9766b1dec6))
+* mention unit type in timeout docs ([d475116](https://github.com/raccoonaihq/raccoonai-node/commit/d4751168ab7be611e42bf7d9c5fe137a6d6361c5))
+
 ## 0.1.0-alpha.23 (2025-06-27)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)

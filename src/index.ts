@@ -211,6 +211,7 @@ export class RaccoonAI extends Core.APIClient {
 RaccoonAI.Lam = Lam;
 RaccoonAI.Tail = Tail;
 RaccoonAI.Fleet = Fleet;
+
 export declare namespace RaccoonAI {
   export type RequestOptions = Core.RequestOptions;
 

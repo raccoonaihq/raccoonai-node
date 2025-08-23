@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.25 (2025-08-23)
+
+Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
+
+### Chores
+
+* **deps:** update dependency node-fetch to v2.6.13 ([8f8ef5b](https://github.com/raccoonaihq/raccoonai-node/commit/8f8ef5b099ada27ea0edb8cbec6a430af821961c))
+* **internal:** formatting change ([4b2a7fc](https://github.com/raccoonaihq/raccoonai-node/commit/4b2a7fcca376d209883a3c4042c37c5213954227))
+* **internal:** move publish config ([8bdfe73](https://github.com/raccoonaihq/raccoonai-node/commit/8bdfe731060d49cc25dda48d4f07a85c453abee1))
+* **internal:** remove redundant imports config ([539495b](https://github.com/raccoonaihq/raccoonai-node/commit/539495bcaa2735da6d03159fef932806b28ab02f))
+* **internal:** update comment in script ([f155c76](https://github.com/raccoonaihq/raccoonai-node/commit/f155c76ec6deee322f7e16d0e1cd736b099b6225))
+* make some internal functions async ([6c1e27a](https://github.com/raccoonaihq/raccoonai-node/commit/6c1e27afe0ca8b55447e68ef0652e70d99418f98))
+* update @stainless-api/prism-cli to v5.15.0 ([28a7792](https://github.com/raccoonaihq/raccoonai-node/commit/28a7792bd040c539ca790a7d561ee93237f1ff84))
+* update CI script ([6f169be](https://github.com/raccoonaihq/raccoonai-node/commit/6f169beee2c6c58eb63e26d9bab7b7709170d9be))
+
 ## 0.1.0-alpha.24 (2025-07-03)
 
 Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)

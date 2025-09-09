@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-09-09)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([649b75e](https://github.com/raccoonaihq/raccoonai-node/commit/649b75e30922f4d1ad687e1133c80f4013234641))
+
+
+### Chores
+
+* ci build action ([520de5f](https://github.com/raccoonaihq/raccoonai-node/commit/520de5fce87f7813a20acd36be7e6e73be5f5072))
+
 ## 0.1.0-alpha.25 (2025-08-23)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)

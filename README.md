@@ -35,28 +35,6 @@ const response = await client.lam.run({
 console.log(response.data);
 ```
 
-## Streaming responses
-
-We provide support for streaming responses using Server Sent Events (SSE).
-
-```ts
-import RaccoonAI from 'raccoonai';
-
-const client = new RaccoonAI();
-
-const stream = await client.lam.run({
-  query: 'Find YCombinator startups who got funded in W24.',
-  raccoon_passcode: '<end-user-raccoon-passcode>',
-  stream: true,
-});
-for await (const lamRunResponse of stream) {
-  console.log(lamRunResponse.data);
-}
-```
-
-If you need to cancel a stream, you can `break` from the loop
-or call `stream.controller.abort()`.
-
 ### Request & Response types
 
 This library includes TypeScript definitions for all request params and response fields. You may import and use them like so:

@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.1.0-alpha.27 (2026-01-07)
+
+Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
+
+### Performance Improvements
+
+* faster formatting ([a259be7](https://github.com/raccoonaihq/raccoonai-node/commit/a259be7fd02023e54412f4ad2e55b6bc50c0f385))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([b1bdac6](https://github.com/raccoonaihq/raccoonai-node/commit/b1bdac6d920cfd495b2d82e404db02a8e55dfa87))
+* **internal:** codegen related update ([56dfec7](https://github.com/raccoonaihq/raccoonai-node/commit/56dfec7b266e82e773fbb0cbeba7d0a5c582280a))
+* **internal:** codegen related update ([bb0e607](https://github.com/raccoonaihq/raccoonai-node/commit/bb0e60789f24aaa8f19fe3bf1051599d170156c6))
+* **internal:** codegen related update ([d534f74](https://github.com/raccoonaihq/raccoonai-node/commit/d534f747ec1fef3cbaae9d10a2d90f098bb3cf41))
+* **internal:** codegen related update ([bc7a11a](https://github.com/raccoonaihq/raccoonai-node/commit/bc7a11a40b5c71a6c92e8c40cd81ed1de1bb59fd))
+* **internal:** fix incremental formatting in some cases ([43adffc](https://github.com/raccoonaihq/raccoonai-node/commit/43adffceb438262bd6d9f716abadd30ebdb97471))
+* **internal:** ignore .eslintcache ([2719550](https://github.com/raccoonaihq/raccoonai-node/commit/2719550d11831063bb379d07e81d3b6a92d7a874))
+* **internal:** remove .eslintcache ([55c2f24](https://github.com/raccoonaihq/raccoonai-node/commit/55c2f24789540fa6d5900521eab8ebe12434f842))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([6cdbaf9](https://github.com/raccoonaihq/raccoonai-node/commit/6cdbaf9043a068bf5b29e59c01ee78fd12470b5b))
+* **internal:** use npm pack for build uploads ([900cb67](https://github.com/raccoonaihq/raccoonai-node/commit/900cb67e0df3f67137c8a158fb87a257caa989ae))
+
 ## 0.1.0-alpha.26 (2025-09-09)
 
 Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/raccoonaihq/raccoonai-node/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
